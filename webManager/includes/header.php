@@ -1,145 +1,136 @@
-<!-- START PAGE CONTAINER -->
-<div class="page-container">
-  <!-- START PAGE SIDEBAR -->
-  <div class="page-sidebar">
-    <!-- START X-NAVIGATION -->
-    <ul class="x-navigation">
-      <li class="xn-logo">
-        <a href="#/">HR King</a>
-        <a href="#" class="x-navigation-control"></a>
-      </li>
-      <li class="xn-profile">
-        <a href="#/" class="profile-mini">
-          <img src="images/icons/ico.png" alt="Logo"/>
-        </a>
-        <div class="profile text-center">
-            <h3 class="profile-data-name">
-              <i class="fa fa-user"></i>
-              <?php echo $admin['username'];?>
-            </h3>
-        </div>
-      </li>
-      <li class="">
-        <a href="#/"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
-      </li>
-      <li class="xn-openable">
-        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Catalog</span></a>
-        <ul>
-          <li><a href="#/category"><span class="fa fa-code-fork"></span> Categories</a></li>
-          <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
-          <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
-          <li>
-            <a ui-sref="advertisement">
-              <span class="fa fa-film"></span>
-              Advertisement
-            </a>
-          </li>
-<!--          <li>-->
-<!--            <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>-->
-<!--          </li>-->
-          <li>
-            <a ui-sref="leason"><span class="fa fa-file-pdf-o"></span> Leason</a>
-          </li>
-<!--          <li>-->
-<!--            <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>-->
-<!--          </li>-->
-          <li><a href="#/content"><span class="fa fa-comments"></span>Content</a></li>
-        </ul>
-      </li>
-      <li class="xn-openable">
-        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Configuration</span></a>
-        <ul>
-          <li><a href="administrators.php">Administrators</a></li>
-<!--          <li><a href="#/customer_plan">Customer Book Plan</a></li>-->
-        </ul>
-      </li>
-<!--      <li class="xn-openable">-->
-<!--        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">Location</span></a>-->
-<!--        <ul>-->
-<!--          <li><a href="#/location">Province</a></li>-->
-<!--          <li><a href="#/district">District</a></li>-->
-<!--          <li><a href="#/village">Village</a></li>-->
-<!--        </ul>-->
-<!--      </li>-->
-    </ul>
-    <!-- END X-NAVIGATION -->
-  </div>
-  <!-- END PAGE SIDEBAR -->
-  <!-- PAGE CONTENT -->
-  <div class="page-content">
-
-    <!-- START X-NAVIGATION VERTICAL -->
-    <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-      <!-- TOGGLE NAVIGATION -->
-      <li class="xn-icon-button">
-        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-      </li>
-      <!-- END TOGGLE NAVIGATION -->
-      <!-- SEARCH -->
-      <li>
-        <a href=" <?php echo tep_catalog_href_link(); ?>" target="_blank">
-          <?php echo HEADER_TITLE_ONLINE_CATALOG ?>
-        </a>
-      </li>
-      <!-- END SEARCH -->
-      <!-- SIGN OUT -->
-      <li class="xn-icon-button pull-right">
-        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
-      </li>
-      <!-- END SIGN OUT -->
-      <?php
-        $queryExpiryday = tep_db_query("select count(*) as total from customers_plan where DAY(plan_expire) = DAY(NOW()) AND MONTH(plan_expire) = MONTH(NOW())");
-        $countExpiryDay = tep_db_fetch_array($queryExpiryday);
-      ?>
-      <?php
-      $queryBook = tep_db_query("select count(*) as total from customers_plan where DAY(create_date) = DAY(NOW()) AND MONTH(create_date) = MONTH(NOW()) AND YEAR(create_date) = YEAR(NOW()) ");
-      $countBook = tep_db_fetch_array($queryBook);
-      ?>
-      <!-- MESSAGES -->
-      <li class="xn-icon-button pull-right">
-        <a href="#"><span class="fa fa-comments"></span></a>
-        <div class="informer informer-danger"><?php echo $countExpiryDay['total'];?></div>
-        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-          <div class="panel-heading">
-            <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
-            <div class="pull-right">
-              <span class="label label-danger"><?php echo $countExpiryDay['total'];?></span>
+<body data-ng-app="main" class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+    <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+                <a href="" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
             </div>
-          </div>
-          <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-<!--            <a class="list-group-item" href="#/customer_expire">-->
-<!--              <strong>Customer Expire Plan</strong>-->
-<!--              <span class="label label-danger">--><?php //echo $countExpiryDay['total'];?><!--</span>-->
-<!--            </a>-->
-          </div>
-          <div class="panel-footer text-center">
-            <a href="#">Show all messages</a>
-          </div>
-        </div>
-      </li>
-      <!-- END MESSAGES -->
-      <!-- TASKS -->
-      <li class="xn-icon-button pull-right">
-        <a href="#"><span class="fa fa-tasks"></span></a>
-        <div class="informer informer-warning"><?php echo $countBook['total'];?></div>
-        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-          <div class="panel-heading">
-            <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
-            <div class="pull-right">
-              <span class="label label-warning"><?php echo $countBook['total'];?> active</span>
+            <div class="clearfix"></div>
+            <!-- menu profile quick info -->
+            <div class="profile">
+                <div class="profile_pic">
+                    <img src="assets/images/icon.png" alt="" class="img-circle profile_img">
+                </div>
+                <div class="profile_info">
+                    <span>Welcome,</span>
+                    <h2>Admin</h2>
+                </div>
             </div>
-          </div>
-          <div class="panel-body list-group scroll" style="height: 200px;">
-<!--            <a class="list-group-item" href="#/customer_plan">-->
-<!--              <strong>Customer Expire Plan</strong>-->
-<!--              <span class="label label-danger">--><?php //echo $countBook['total'];?><!--</span>-->
-<!--            </a>-->
-          </div>
-          <div class="panel-footer text-center">
-            <a href="#">Show all tasks</a>
-          </div>
+            <!-- /menu profile quick info -->
+            <br />
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                    <h3>Group 1</h3>
+                    <ul class="nav side-menu">
+                        <li><a><i class="fa fa-home"></i> Multiple link <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="#">Link 1</a></li>
+                                <li><a href="#">Link 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-laptop"></i>
+                                One link
+                                <span class="label label-success pull-right">Flag</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu_section">
+                    <h3>Group 2</h3>
+                    <ul class="nav side-menu">
+                        <li>
+                            <a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li>
+                                    <a href="#">Level One</a>
+                                    <li>
+                                        <a>Level One<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li class="sub_menu">
+                                                <a href="#">Level Two</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Level Two</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Level Two</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li>
+                                    <a href="#">Level One</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            
+            </div>
+            <!-- /sidebar menu -->            
         </div>
-      </li>
-      <!-- END TASKS -->
-    </ul>
-    <!-- END X-NAVIGATION VERTICAL -->
+    </div>
+    <!-- top navigation -->
+    <div class="top_nav">
+        <div class="nav_menu">
+            <nav>
+                <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                </div>                
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" 
+                        data-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/icon.png" alt="">
+                            Admin
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="javascript:;"> Profile</a></li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li><a href="javascript:;">Help</a></li>
+                            <li><a href="login.php?action=logoff"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        </ul>
+                    </li>                    
+                    <li role="presentation" class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">6</span>
+                        </a>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <li>
+                                <a>
+                                  <span class="image"><img src="assets/images/icon.png" alt="Profile Image" /></span>
+                                  <span>
+                                    <span>alert</span>
+                                    <span class="time">3 mins ago</span>
+                                  </span>
+                                  <span class="message">
+                                    Nothing
+                                  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="text-center">
+                                    <a>
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- /top navigation -->

@@ -130,65 +130,55 @@
 if (tep_db_num_rows($admins_check_query) < 1) {
   $messageStack->add(TEXT_CREATE_FIRST_ADMINISTRATOR, 'warning');
 }
+
+require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<!DOCTYPE html>
-<html <?php echo HTML_PARAMS; ?> class="body-full-height">
-<head>
-  <!-- META SECTION -->
-  <title><?php echo TITLE; ?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <!-- END META SECTION -->
-
-  <!-- CSS INCLUDE -->
-  <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
-  <!-- EOF CSS INCLUDE -->
-</head>
-<body>
-
-<div class="login-container">
-  <div class="login-box animated fadeInDown">
-    <div class="login-body">
-      <div class="login-title"><strong><?php echo HEADING_TITLE; ?></strong></div>
-        <?php
-          if ($messageStack->size > 0) {
-            echo '<div class="alert alert-danger">' . $messageStack->output() . '</div>';
-          }
-        ?>
+<body class="login">
+    
+  <div class="animate form login_form">
+    <div class="login_wrapper">
+      <section class="login_content">
+        <div class="login-body">
         <?php echo tep_draw_form('login', FILENAME_LOGIN, 'action=process', 'post', 'class="form-horizontal"', true);?>
-          <div class="form-group">
-            <div class="col-md-12">
-              <input type="text" class="form-control" required placeholder="Username" name="username"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-12">
-              <input type="password" class="form-control" required placeholder="Password" name="password"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-6">
-              <button class="btn btn-info btn-block">Log In</button>
-            </div>
-          </div>
-        </form>
-    </div>
-    <div class="login-footer">
-      <div class="pull-left">
-        <div align="center" class="smallText">
-          Copyright &copy; <?php echo date('Y'); ?> Power By
-          <a href="https://www.facebook.com/skwebsolution/" target="_blank">
-            SK Web Solution
-          </a>
+             
+          <h1><?php echo HEADING_TITLE; ?></h1>
+            <?php
+              if ($messageStack->size > 0) {
+                echo '<div class="alert alert-danger">' . $messageStack->output() . '</div>';
+              }
+            ?>
+             <div class="form-group">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" required placeholder="Username" name="username"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <input type="password" class="form-control" required placeholder="Password" name="password"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-6">
+                  <button class="btn btn-info btn-block">Log In</button>
+                </div>
+              </div>
+            </form>
         </div>
-      </div>
+        <div class="login-footer">
+          <div class="pull-left">
+            <div align="center" class="smallText">
+              Copyright &copy; <?php echo date('Y'); ?> Power By
+              <a href="https://www.facebook.com/skwebsolution/" target="_blank">
+                SK Web Solution
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-
-</div>
+  
+</body>
 <?php
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>

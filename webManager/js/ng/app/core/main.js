@@ -1,17 +1,6 @@
 var app = angular.module(
     'main',
     [
-        'ui.router'
-        , 'ui.bootstrap'
-        , 'ngSanitize'
-        , 'ui.tinymce'
-        , 'ngFileUpload'
-        , 'ngCookies'
-        , 'ngAlertify'
-        , 'uiGmapgoogle-maps'
-        , 'ui.select'
-        , 'ds.clock'
-        , 'ui.calendar'
     ]
 );
 // range with number

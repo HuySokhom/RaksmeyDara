@@ -24,10 +24,21 @@
   }
 
   require(DIR_WS_INCLUDES . 'template_top.php');
+  require(DIR_WS_INCLUDES . 'header.php');
 ?>
-<div class="page-content-wrap panel-body">
-  <span data-ui-view="" ></span>
-</div>
+  <div class="right_col" role="main"></div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Copyright &copy; <?php echo date('Y'); ?> Power By
+              <a href="https://www.facebook.com/skwebsolution/" target="_blank">
+                SK Web Solution
+              </a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

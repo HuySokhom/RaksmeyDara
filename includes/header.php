@@ -18,18 +18,18 @@
         ?>
           <li><a href="login.php"><i class="fa fa-sign-in"></i> Login</a></li>
           <li><a href="create_account.php"><i class="fa fa-external-link"></i> Sign Up</a></li>
-        <?php }else{
+        <?php } else {
           echo '<li><a href="account.php"><i class="fa fa-user"></i>  My Account</a></li>
             <li><a href="logoff.php"><i class="fa fa-sign-out"></i> Sign Out</a></li>
           ';
-          }?>
-          <?php
+        }?>
+        <?php
           if(!tep_session_is_registered('customer_id')) {
-            ?>
+        ?>
             <li><a href="account.php#/manage/post" class="primary">Post Job Now</a></li>
-            <?php
+        <?php
           }
-          ?>
+        ?>
         </ul><!-- /.header-actions -->
 
         <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav">
