@@ -1,0 +1,147 @@
+<div class="panel">
+    <div class="panel-body">
+        <form data-ng-submit="vm.save();" name="myForm">
+            <h4>
+                Job Information
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        Type:
+                        <span class="require">*</span>
+                    </label>
+                    <select data-ng-model="vm.model.categories_id"
+                        data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">--Select Category--</option>
+                    </select>
+                    <label>
+                        Job Type
+                        <span class="require">*</span>
+                    </label>
+                    <select data-ng-model="vm.model.products_kind_of"
+                        data-ng-options="p for p in vm.propertyTypes"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">--Select Category--</option>
+                    </select>
+                    <label>
+                        Gender:
+                        <span class="require">*</span>
+                    </label>
+                    <select data-ng-model="vm.model.gender"
+                        data-ng-options="p for p in vm.genders"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">--Select Gender--</option>
+                    </select>
+                    <label>
+                        Job Title:
+                        <span class="require">*</span>
+                    </label>
+                    <input type="text"
+                        class="form-control"
+                        data-ng-model="vm.model.product_detail[0].products_name"
+                        required
+                    />
+                    <label>
+                        Salary:
+                    </label>
+                    <input type="number"
+                           class="form-control"
+                           required
+                           data-ng-model="vm.model.salary"/>
+                    <label>
+                        Number of Hire:
+                    </label>
+                    <input type="number"
+                           class="form-control"
+                           required
+                           data-ng-model="vm.model.number_of_hire"/>
+                    <label>
+                        Location:
+                        <span class="require">*</span>
+                    </label>
+                    <select data-ng-model="vm.model.province_id"
+                        data-ng-options="p.id as p.name for p in vm.locations.elements"
+                        class="form-control"
+                        data-ng-change="initDistrict(province_id);"
+                        required
+                    >
+                        <option value="">--Select Province--</option>
+                    </select>
+                    <label>
+                        Expire Date:
+                        <span class="require">*</span>
+                    </label>
+                    <input type="text"
+                        class="form-control"
+                        data-ng-model="vm.model.products_close_date"
+                        required
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        Description, duties, responsibilities:
+                        <span class="require">*</span>
+                    </label>
+                    <textarea ui-tinymce="tinymceOptions"
+                              data-ng-model="vm.model.product_detail[0].products_description"
+                              class="form-control"
+                              style="height: 250px;"
+                    ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="dcol-md-12">
+                    <div class="col-md-6">
+                        <label>
+                            Other benefits:
+                            <span class="require">*</span>
+                        </label>
+                        <textarea ui-tinymce="tinymceOptions"
+                              data-ng-model="vm.model.product_detail[0].benefits"
+                              class="form-control"
+                              style="height: 180px;"
+                        ></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label>
+                            Personality requirements and skills:
+                            <span class="require">*</span>
+                        </label>
+                        <textarea ui-tinymce="tinymceOptions"
+                              style="height: 180px;"
+                            data-ng-model="vm.model.product_detail[0].skill"
+                            class="form-control"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="row col-md-12">
+                <div class="">
+                    <button
+                        class="btn btn-primary"
+                        data-ng-disabled="!vm.disabled"
+                    >
+                        <i class="fa fa-save" data-ng-show="vm.disabled"></i>
+                        <i class="fa fa-refresh fa-spin" data-ng-hide="vm.disabled"></i>
+                        Save
+                    </button>
+                    <button
+                        class="btn btn-default"
+                        ng-click="vm.back($event);"
+                    >
+                        <i class="fa fa-close"></i>
+                        Close
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
