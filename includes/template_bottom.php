@@ -1,50 +1,46 @@
-<div class="footer-wrapper">
+    <!-- Footer -->
     <div class="footer">
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="footer-bottom-left">
-                    &copy; <a href="index.php">HRKing</a>, 2016 All rights reserved.
-                </div><!-- /.footer-bottom-left -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="title-footer"><span>Our Store</span></div>
+            <ul class="footer-icon">
+              <li><span><i class="fa fa-map-marker"></i></span> 212 Lorem Ipsum. Dolor Sit, Amet</li>
+              <li><span><i class="fa fa-phone"></i></span> +123-456-789</li>
+              <li><span><i class="fa fa-envelope"></i></span> <a href="mailto:cs@domain.tld">cs@domain.tld</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="title-footer"><span>Follow Us</span></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum</p>
+            <ul class="follow-us">
+              <li><a href="login.html#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="login.html#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="login.html#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="login.html#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="login.html#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+          </div>
+          <div class="clearfix visible-sm-block"></div>
+          <div class="col-md-3 col-sm-6">
+            <div class="title-footer"><span>About Us</span></div>
+            <ul>
+              <li>
+                Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et doloremmagna aliqua. Ut enim ad minim... <a href="login.html#">Read More</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center copyright">
+        Copyright &copy; 2017 <?php echo STORE_NAME; ?> All right reserved. 
+        Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">Skweb Solution</a>.
+      </div>
+    </div>
+    <!-- End Footer -->
 
-                <div class="footer-bottom-right">
-                    Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">SKWEBSolution</a>.
-                </div><!-- /.footer-bottom-right -->
-            </div><!-- /.container -->
-        </div><!-- /.footer-bottom -->
-    </div><!-- /.footer -->
-</div><!-- /.footer-wrapper -->
-
-</div>
-<!-- /.page-wrapper -->
-
-
-<script type="text/javascript" src="assets/js/jquery.js"></script>
-<script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
-
-<script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
-<script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
-<script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
-<script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
-<script type="text/javascript" src="assets/js/alertify.js"></script>
-<script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
-
-<script type="text/javascript" src="assets/js/profession.js"></script>
-
-<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKqUQ4QmbTWM_KNhkYg7erVxakz_0-noE&v=3.exp"></script>-->
-<!-- Facebook Plugin-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1423595867869606";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
+    <script src="assets/js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

@@ -28,22 +28,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
     <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta name="description" http-equiv="Description" content="HrKing, Job online cambodia, hrking the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
-    <meta name="keywords" content="HrKing, Job online cambodia, hrking the best job in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
-    <meta name="author" content="KRKING">
+    <meta name="description" http-equiv="Description" content="Fashion shop, Raksmey dara tailor,  <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="keywords" content="Fashion shop in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="author" content="raksmey dara">
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
-    <link rel="shortcut icon" href="assets/favicon.png">
+    <link rel="shortcut icon" href="assets/favicon.icon">      
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Plugins -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-select.css" rel="stylesheet">
+    <link href="assets/css/style.teal.flat.css" rel="stylesheet" id="theme">
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/profession-blue-navy.css" rel="stylesheet" type="text/css" id="style-primary">
-    <link href="assets/fonts/profession/style.css" rel="stylesheet" type="text/css">
-    <?php echo $oscTemplate->getBlocks('header_tags'); ?>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
-<body class="hero-content-dark footer-dark">
-<div class="page-wrapper">
+<body class="cms-index-index cms-home-page home-1">
     <?php require(DIR_WS_INCLUDES . 'header.php');?>
