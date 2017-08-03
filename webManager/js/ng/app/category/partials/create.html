@@ -1,0 +1,68 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>{{vm.title}}</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <button onclick="window.history.go(-1); return false;" class="btn btn-default">
+                    <i class="fa fa-backward"></i>
+                    Back
+                </button>
+            </li>
+        </ul>
+        <div class="clearfix"></div> 
+    </div>
+    <div class="x_content">
+        <form data-ng-submit="vm.save();" name="form" class="form-horizontal" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Parent
+                            </span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="form-control" name="parent"
+                                ng-model="vm.model.parent_id"
+                                data-ng-options="x.categories_id as x.detail[0].categories_name for x in vm.category"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.customers_name.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Name
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text"
+                                class="form-control"
+                                data-ng-model="vm.model.name"
+                                name="customers_name"
+                                placeholder="Name"
+                                required="required" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Sort Order
+                            </span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" min="0" name="sort_order" 
+                                class="form-control"
+                                placeholder="Sort Order">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <save-template cancel="vm.cancel()" save="vm.save()" disable="vm.loading"></save-template>		
+	    </form> 
+    </div>
+</div>

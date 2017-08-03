@@ -9,15 +9,15 @@ class RestApiIndex extends RestApi {
 		$customer_query = tep_db_query("select count(customers_id) as total from customers where status = 1");
 		$customer = tep_db_fetch_array($customer_query);
 
-		$news_query = tep_db_query("select count(id) as total from news where status = 1");
-		$news = tep_db_fetch_array($news_query);
+		$category_query = tep_db_query("select count(categories_id) as total from categories");
+		$category = tep_db_fetch_array($category_query);
 
 
 		return array( data =>
 			array(
-				total_product => $products['total'],
-				total_customer => $customer['total'],
-				total_news => $news['total'],
+				total_products => $products['total'],
+				total_customers => $customer['total'],
+				total_categories => $category['total'],
 			)
 		);
 	}

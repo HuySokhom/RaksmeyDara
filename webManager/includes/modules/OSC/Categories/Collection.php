@@ -18,4 +18,5 @@ class Collection extends StdCollection {
 	public function sortByOrder($arg){
 		$this->addOrderBy('c.sort_order', $arg);
 	}
+
 }

@@ -12,10 +12,9 @@ use
 class RestApiCategory extends RestApi {
 
     public function get($params){
-
         $col = new CategoryCollection();
         if($params['GET']['pagination']){
-        // start limit page
+            // start limit page
             $showDataPerPage = 10;
             $start = $params['GET']['start'];
             $this->applyLimit($col,
@@ -24,7 +23,6 @@ class RestApiCategory extends RestApi {
                 )
             );
         }
-//        $this->applyFilters($col, $params);
         $col->sortByOrder('ASC');
         return $this->getReturn($col, $params);
 

@@ -26,19 +26,9 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
   require(DIR_WS_INCLUDES . 'header.php');
 ?>
-  <div class="right_col" role="main"></div>
-    <!-- /page content -->
-
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Copyright &copy; <?php echo date('Y'); ?> Power By
-              <a href="https://www.facebook.com/skwebsolution/" target="_blank">
-                SK Web Solution
-              </a>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
+  <div class="right_col" role="main" data-ui-view="">
+  </div>
+  <!-- /page content -->    
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

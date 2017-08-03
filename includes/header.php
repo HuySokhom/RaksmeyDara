@@ -5,22 +5,20 @@
         <div class="row">
           <div class="col-xs-12">
             <ul class="list-inline pull-left">
-              <li>
-                <select class="selectpicker" data-width="95px" data-style="btn-default">
-                  <option value="English" data-content="<img alt='English' src='images/en.jpg'> English">English</option>
-                  <option value="French" data-content="<img alt='French' src='images/fr.jpg'> French">French</option>
-                </select>
+              <li class="hidden-xs">
+                <a href="tel:<?php echo STORE_PHONE;?>">
+                  <i class="fa fa-phone"></i> 
+                  <?php echo STORE_PHONE;?>
+                </a>
               </li>
-              <li>
-                <select class="selectpicker" data-width="70px" data-style="btn-default">
-                  <option value="USD">$ USD</option>
-                  <option value="EUR">€ EUR</option>
-                </select>
+              <li class="hidden-xs">
+                <a href="mailto:<?php echo STORE_OWNER_EMAIL_ADDRESS;?>">
+                  <i class="fa fa-envelope"></i> 
+                  <?php echo STORE_OWNER_EMAIL_ADDRESS;?>
+                </a>
               </li>
-              <li class="hidden-xs"><a href="login.html#"><i class="fa fa-phone"></i> +123-456-789</a></li>
-              <li class="hidden-xs"><a href="mailto:cs@domain.tld"><i class="fa fa-envelope"></i> cs@domain.tld</a></li>
             </ul>
-            <ul class="list-inline pull-right">
+            <!-- <ul class="list-inline pull-right">
               <li class="hidden-xs"><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist (3)</a></li>
               <li class="hidden-xs"><a href="compare.html"><i class="fa fa-align-left"></i> Compare (4)</a></li>
               <li>
@@ -49,7 +47,7 @@
                   </div>
                 </div>
               </li>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>
@@ -70,17 +68,7 @@
           <div class="col-sm-8 col-md-6 search-box m-t-2">
             <div class="input-group">
               <input type="text" class="form-control search-input" aria-label="Search here..." placeholder="Search here...">
-              <div class="input-group-btn">
-                <select class="selectpicker hidden-xs" data-width="150px">
-                  <option value="0">All Categories</option>
-                  <option value="1">Dresses</option>
-                  <option value="2">Tops</option>
-                  <option value="3">Bottoms</option>
-                  <option value="4">Jackets / Coats</option>
-                  <option value="5">Sweaters</option>
-                  <option value="6">Gym Wear</option>
-                  <option value="7">Others</option>
-                </select>
+              <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
               </div>
             </div>
@@ -154,9 +142,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="cart.html" class="btn btn-default btn-cart-xs visible-xs pull-right">
+            <!-- <a href="cart.html" class="btn btn-default btn-cart-xs visible-xs pull-right">
               <i class="fa fa-shopping-cart"></i> Cart : 4 items
-            </a>
+            </a> -->
           </div>
           <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -262,11 +250,11 @@
                 </ul>
               </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right navbar-feature visible-lg">
+            <!-- <ul class="nav navbar-nav navbar-right navbar-feature visible-lg">
               <li><a><i class="fa fa-truck"></i> Free Shipping</a></li>
               <li><a><i class="fa fa-money"></i> Cash on Delivery</a></li>
               <li><a><i class="fa fa-lock"></i> Secure Payment</a></li>
-            </ul>
+            </ul> -->
           </div>
       </div>
     </nav>

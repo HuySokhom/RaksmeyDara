@@ -3,22 +3,41 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-sm-6">
-            <div class="title-footer"><span>Our Store</span></div>
+            <div class="title-footer"><span><?php echo STORE_NAME; ?></span></div>
             <ul class="footer-icon">
-              <li><span><i class="fa fa-map-marker"></i></span> 212 Lorem Ipsum. Dolor Sit, Amet</li>
-              <li><span><i class="fa fa-phone"></i></span> +123-456-789</li>
-              <li><span><i class="fa fa-envelope"></i></span> <a href="mailto:cs@domain.tld">cs@domain.tld</a></li>
+              <li>
+                <span><i class="fa fa-map-marker"></i></span> 
+                <?php echo nl2br(STORE_ADDRESS); ?></li>
+              <li>
+                <span><i class="fa fa-phone"></i></span> 
+                <a href="tel:<?php echo STORE_PHONE;?>">
+                  <?php echo STORE_PHONE; ?>
+                </a>
+              </li>
+
+              <li>
+                <span>
+                  <i class="fa fa-envelope"></i>
+                </span> 
+                <a href="mailto:<?php echo STORE_OWNER_EMAIL_ADDRESS; ?>">
+                  <?php echo STORE_OWNER_EMAIL_ADDRESS; ?>
+                </a>
+              </li>
             </ul>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="title-footer"><span>Follow Us</span></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum</p>
             <ul class="follow-us">
-              <li><a href="login.html#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="login.html#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="login.html#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="login.html#"><i class="fa fa-instagram"></i></a></li>
-              <li><a href="login.html#"><i class="fa fa-rss"></i></a></li>
+              <li>
+                <a href="https://www.facebook.com/raksmeydaradaemtailor/" target="_blank">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-rss"></i></a></li>
             </ul>
           </div>
           <div class="clearfix visible-sm-block"></div>

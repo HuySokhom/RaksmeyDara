@@ -1,46 +1,23 @@
-<!-- START WIDGETS -->
-<div class="row">
-    <div class="col-md-4">
-        <!-- START WIDGET MESSAGES -->
-        <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
-            <div class="widget-item-left">
-                <span class="fa fa-industry"></span>
-            </div>
-            <div class="widget-data">
-                <div class="widget-int num-count">{{index.total_product}}</div>
-                <div class="widget-title">Total Jobs</div>
-                <div class="widget-subtitle">On your website</div>
-            </div>
+<div class="row top_tiles">
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+            <div class="count">{{vm.index.total_customers}}</div>
+            <h3>Total Customers</h3>
         </div>
-        <!-- END WIDGET MESSAGES -->
     </div>
-    <div class="col-md-4">
-
-        <!-- START WIDGET REGISTRED -->
-        <div class="widget widget-default widget-item-icon" onclick="location.href='#';">
-            <div class="widget-item-left">
-                <span class="fa fa-user"></span>
-            </div>
-            <div class="widget-data">
-                <div class="widget-int num-count">{{index.total_customer}}</div>
-                <div class="widget-title">Registred users</div>
-                <div class="widget-subtitle">On your website</div>
-            </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-comments-o"></i></div>
+            <div class="count">{{vm.index.total_categories}}</div>
+            <h3>Total Categories</h3>
         </div>
-        <!-- END WIDGET REGISTRED -->
-
     </div>
-    <div class="col-md-4">
-
-        <!-- START WIDGET CLOCK -->
-        <div class="widget widget-info widget-padding-sm">
-            <div class="widget-big-int plugin-date">
-                <ds-widget-clock show-digital digital-format="format"></ds-widget-clock>
-            </div>
+    <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+            <div class="count">{{vm.index.total_products}}</div>
+            <h3>Total Products</h3> 
         </div>
-        <!-- END WIDGET CLOCK -->
-
     </div>
-    <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
 </div>
-<!-- END WIDGETS -->

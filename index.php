@@ -35,6 +35,79 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <?php
+ if ($category_depth == 'products' || (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id']))) {
+
+    /******************************************************************************************/
+    /********************** Optional Product Filter by Categories *****************************/
+    /******************************************************************************************/
+    $listing_sql = "
+      select
+          DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
+          pd.products_name,
+          pd.products_viewed,
+          cu.photo_thumbnail,
+          p.products_id,
+          p.products_promote,
+          cu.company_name,
+          l.name as location
+      from
+          products_description pd, products p, customers cu, location l
+      where
+          p.products_status = 1
+              and
+          pd.products_id = p.products_id
+              and
+          l.id = p.province_id
+              and
+          cu.customers_id = p.customers_id
+              and
+          pd.language_id = " . (int)$languages_id . "
+              and
+          p.categories_id = '" . (int)$current_category_id . "'
+      ORDER BY
+          p.products_promote DESC,
+          p.products_close_date DESC
+      ";
+
+?>
+<div class="margin-top">
+
+<?php
+
+    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
+?>
+
+</div>
+
+<?php
+  } else {
+
+    /****************************************************************/
+    /********************** default page ****************************/
+    /****************************************************************/
+?>
+
+<?php
+  if ($messageStack->size('product_action') > 0) {
+    echo $messageStack->output('product_action');
+  }
+?>
+
+<div class="container">
+    <?php
+        if (tep_not_null(TEXT_MAIN)) {
+    ?>
+      <div class="contentText">
+        <?php echo TEXT_MAIN; ?>
+      </div>
+    <?php
+        }
+        include(DIR_WS_MODULES . FILENAME_HOME);
+    ?>
+</div>
+<?php
+  }
+
   require(DIR_WS_INCLUDES . 'template_bottom.php');
-  // require(DIR_WS_INCLUDES . 'application_bottom.php');
+  require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>

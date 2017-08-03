@@ -1,25 +1,3 @@
-<?php
-/*
-  $Id$
-
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-
-  Copyright (c) 2014 osCommerce
-
-  Released under the GNU General Public License
-*/
-
-  $oscTemplate->buildBlocks();
-
-  if (!$oscTemplate->hasBlocks('boxes_column_left')) {
-    $oscTemplate->setGridContentWidth($oscTemplate->getGridContentWidth() + $oscTemplate->getGridColumnWidth());
-  }
-
-  if (!$oscTemplate->hasBlocks('boxes_column_right')) {
-    $oscTemplate->setGridContentWidth($oscTemplate->getGridContentWidth() + $oscTemplate->getGridColumnWidth());
-  }
-?>
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>  xmlns:ng="http://angularjs.org/" data-ng-app="main">
 <head>
@@ -28,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
     <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta name="description" http-equiv="Description" content="Fashion shop, Raksmey dara tailor,  <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="description" http-equiv="Description" content="Fashion shop, Reaksmey dara tailor,  <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
     <meta name="keywords" content="Fashion shop in cambodia, <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
-    <meta name="author" content="raksmey dara">
+    <meta name="author" content="reaksmey dara">
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
     <link rel="shortcut icon" href="assets/favicon.icon">      
