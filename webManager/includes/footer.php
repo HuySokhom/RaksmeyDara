@@ -24,10 +24,10 @@
     type="text/javascript"
     src="js/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
-<script
+<!-- <script
     type="text/javascript"
     src="js/ng/lib/angular-smart-table/smart-table.js"
-></script>
+></script> -->
 <script
     type="text/javascript"
     src="js/ng/lib/angular-tinymce/tinymce.js"
@@ -75,3 +75,12 @@
     type="text/javascript"
     src="js/ng/app/category/controller/category_create_ctrl.js"
 ></script> 
+<script
+    type="text/javascript"
+    src="js/ng/app/image_slider/controller/image_slider_ctrl.js"
+></script> 
+<script
+    type="text/javascript"
+    src="js/ng/app/image_slider/directive/image_slider_popup.js"
+></script> 
+

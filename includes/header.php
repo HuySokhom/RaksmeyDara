@@ -61,17 +61,37 @@
           <div class="col-md-3 logo">
               <?php
                 echo '<a href="' . tep_href_link('index.php') . '">
-                    <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"
+                    <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width:60px"
                     class="img-responsive" alt="logo"/></a>';
               ?>
           </div>
+          <?php 
+            echo
+                tep_draw_form('advanced_search', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false),
+                    'get',
+                    'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id();
+          ?>
           <div class="col-sm-8 col-md-6 search-box m-t-2">
-            <div class="input-group">
+            <!-- <div class="input-group">
               <input type="text" class="form-control search-input" aria-label="Search here..." placeholder="Search here...">
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
               </div>
+            </div> -->
+            <div class="input-group">
+              <input type="text" class="form-control search-input" aria-label="Search here..." placeholder="Search here...">
+              <div class="input-group-btn">
+                 <?php
+                    echo tep_draw_pull_down_menu(
+                        'categories_id',
+                        tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
+                        NULL,
+                        'id="entryCategories" class="selectpicker"');
+                  ?>
+                <button type="submit" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+              </div>
             </div>
+            </form>
           </div>
           <!-- <div class="col-sm-4 col-md-3 cart-btn hidden-xs m-t-2">
             <button type="button" class="btn btn-default dropdown-toggle" id="dropdown-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -148,7 +168,10 @@
           </div>
           <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="index.php">Home</a></li>
+              <?php
+                echo tep_get_categories_list();
+                ?>
               <li><a href="products.html">Products</a></li>
               <li><a href="cart.html">Shopping Cart</a></li>
               <li><a href="checkout.html">Checkout</a></li>

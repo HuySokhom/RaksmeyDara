@@ -7,6 +7,6 @@ var app = angular.module(
         , 'ngFileUpload'
         , 'ngAlertify'
         , 'ui.bootstrap'
-        , 'smart-table'
+        //, 'smart-table'
     ]
 );

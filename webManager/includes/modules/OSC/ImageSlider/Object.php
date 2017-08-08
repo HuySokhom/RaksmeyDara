@@ -24,7 +24,8 @@ class Object extends DbObj {
 				'image',
 				'link',
 				'sort_order',
-				'image_thumbnail'
+				'image_thumbnail',
+				'status'
 			)
 		);
 
@@ -79,7 +80,22 @@ class Object extends DbObj {
 				text = '" . $this->dbEscape( $this->getText() ) . "',
 				image = '" . $this->dbEscape( $this->getImage() ) . "',
 				image_thumbnail = '" . $this->dbEscape( $this->getImageThumbnail() ) . "',
-				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "'
+				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "',
+				link = '" . $this->dbEscape($this->getLink()) . "'
+			WHERE
+				id = '" . (int)$this->getId() . "'
+		");		
+	}
+
+	public function updateStatus(){
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}		
+		$this->dbQuery("
+			UPDATE
+				image_slider
+			SET
+				status = '" . $this->dbEscape( $this->getStatus() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -97,6 +113,7 @@ class Object extends DbObj {
 				image,
 				image_thumbnail,
 				sort_order,
+				status,
 				created
 			)
 				VALUES
@@ -106,6 +123,7 @@ class Object extends DbObj {
 				'" . $this->dbEscape($this->getImage()) . "',
 				'" . $this->dbEscape( $this->getImageThumbnail() ) . "',
 				'" . (int)$this->getSortOrder() . "',
+				1,
 				NOW()
 			)
 		");
@@ -113,7 +131,7 @@ class Object extends DbObj {
 	}
 
 	public function setSortOrder( $string ){
-		$this->sortOrder = (string)$string;
+		$this->sortOrder = (int)$string;
 	}
 
 	public function getSortOrder(){

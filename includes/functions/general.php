@@ -569,9 +569,6 @@ function tep_get_location($id = '') {
      if ($categories['categories_id'] != $parent_id) {
        $t .= tep_get_categories_list($categories['categories_id'], $indent . '');
      }
-     $countProducts = tep_db_query("select count(products_id) as count_category from products where categories_id = '".$categories['categories_id'] . "' and products_status = 1 ");
-     $count = tep_db_fetch_array($countProducts);
-     $t .= '<span class="filter-list-count">(' . $count['count_category'] . ')</span> </a></li>';
    }
    $t .= '';
    return $t;

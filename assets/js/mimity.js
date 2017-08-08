@@ -7,8 +7,8 @@ function set_color() {
   var style = localStorage.getItem('mimity-style');
   $('#color-chooser').val(color);
   $('#style-chooser').val(style);
-  $('#theme').attr('href','css/style.'+color+'.'+style+'.css');
-  $('.logo img').attr('src','images/logo-'+color+'.png');
+  //$('#theme').attr('href','assets/css/style.'+color+'.'+style+'.css');
+  // $('.logo img').attr('src','images/logo-'+color+'.png');
 }
 
 // Function to get current scroll position ===================================================
@@ -69,7 +69,7 @@ function get_current_scroll() {
           top_header.addClass('mt-139');
           middle_header_row.addClass('pb-10');
           logo_img.addClass('hide');
-          logo_a.append('<h4>'+logo_img.data('text-logo')+'</h4>');
+          //logo_a.append('<h4>'+logo_img.data('text-logo')+'</h4>');
           search_box.removeClass('m-t-2');
         } else {
           top_header.addClass('mt-94');

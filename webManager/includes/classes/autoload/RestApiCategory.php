@@ -13,6 +13,8 @@ class RestApiCategory extends RestApi {
 
     public function get($params){
         $col = new CategoryCollection();
+        $this->getId() ? $col->filterById($this->getId()) : '';
+        $params['GET']['filter'] ? $col->filterByName($params['GET']['filter']) : '';
         if($params['GET']['pagination']){
             // start limit page
             $showDataPerPage = 10;

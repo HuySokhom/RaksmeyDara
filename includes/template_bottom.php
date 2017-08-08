@@ -61,5 +61,11 @@
     <script src="assets/js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/bootstrap/js/bootstrap.js"></script>
+
+    <script src="assets/js/bootstrap-select.js"></script>
+    <script src="assets/js/bootstrap3-typeahead.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/bootstrap-toolkit.js"></script>
+    <script src="assets/js/mimity.js"></script>
 </body>
 </html>

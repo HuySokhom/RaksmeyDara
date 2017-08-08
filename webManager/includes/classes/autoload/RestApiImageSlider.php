@@ -50,6 +50,14 @@ class RestApiImageSlider extends RestApi {
         );
     }
 
+	public function patch($params){
+		$obj = new ImageSliderObject();
+		$obj->setId($this->getId());
+		$obj->setUpdateBy($_SESSION['admin']['username']);
+		$obj->setStatus($params['PATCH']['status']);
+		$obj->updateStatus();
+	}
+
     public function delete($params){
         // loop to get key from delete parse data in string
         foreach ($params['DELETE'] as $key => $value) {

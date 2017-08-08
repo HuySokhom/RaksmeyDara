@@ -37,14 +37,34 @@
     <br>
     <div class="container">
           <div class="row">
-              <div class="col-md-3 col-sm-4">
-                  <div class="filter-stacked">
-                      <?php include('advanced_search_box_right.php');?>
-                  </div><!-- /.filter-stacked -->
-
-              </div>
               <!-- /.col-* -->
-              <div class="col-md-9 col-sm-8">
+              <div class="col-md-12">
+                  <div class="title"><span>Featured Products</span></div>
+          <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
+            <div class="box-product">
+              <div class="img-wrapper">
+                <a href="detail.html">
+                  <img alt="Product" src="images/demo/polo1.jpg">
+                </a>
+                <div class="tags">
+                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
+                </div>
+                <div class="tags tags-left">
+                  <span class="label-tags"><span class="label label-danger arrowed-right">Sale</span></span>
+                </div>
+                <div class="option">
+                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                </div>
+              </div>
+              <h6><a href="detail.html">IncultGeo Print Polo T-Shirt</a></h6>
+              <div class="price">
+                <div>$13.50 <span class="label-tags"><span class="label label-default">-10%</span></span></div>
+                <span class="price-old">$15.00</span>
+              </div>
+            </div>
+          </div>
               <?php
               if($row > 0) {
                   foreach ($prod_list_contents as $product) {

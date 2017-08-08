@@ -19,4 +19,13 @@ class Collection extends StdCollection {
 		$this->addOrderBy('c.sort_order', $arg);
 	}
 
+	public function filterByName($arg){
+		$this->addTable('categories_description', 'cd');
+		$this->addWhere("cd.categories_id = c.categories_id");
+		$this->addWhere("cd.categories_name like "%' . $arg . '%" ");
+	}
+
+	public function filterById($arg){
+		$this->addWhere("c.categories_id = " . $arg . " ");
+	}
 }

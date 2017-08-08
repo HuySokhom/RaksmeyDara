@@ -70,7 +70,7 @@
       ";
 
 ?>
-<div class="margin-top">
+<div class="">
 
 <?php
 
@@ -93,21 +93,14 @@
   }
 ?>
 
-<div class="container">
-    <?php
-        if (tep_not_null(TEXT_MAIN)) {
-    ?>
-      <div class="contentText">
-        <?php echo TEXT_MAIN; ?>
-      </div>
-    <?php
-        }
-        include(DIR_WS_MODULES . FILENAME_HOME);
-    ?>
-</div>
-<?php
+  <?php
+      if (tep_not_null(TEXT_MAIN)) {
+        echo TEXT_MAIN;
+      }
+      include(DIR_WS_MODULES . FILENAME_HOME);
   }
-
+?>
+<?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>

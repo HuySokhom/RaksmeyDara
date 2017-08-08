@@ -17,6 +17,8 @@
     <!-- Plugins -->
     <link href="assets/css/font-awesome.css" rel="stylesheet">
     <link href="assets/css/bootstrap-select.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.default.css" rel="stylesheet">
     <link href="assets/css/style.teal.flat.css" rel="stylesheet" id="theme">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

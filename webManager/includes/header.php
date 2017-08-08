@@ -49,6 +49,11 @@
                                         Products
                                     </a>
                                 </li>
+                                 <li ui-sref-active="active">
+                                    <a ui-sref="slider">
+                                        Image Slider
+                                    </a>
+                                </li>
                                 <li ui-sref-active="active">
                                     <a ui-sref="user">
                                         Users

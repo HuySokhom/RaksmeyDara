@@ -25,70 +25,70 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>
-					#
-				</th>
-				<th>
-					Name
-				</th>
-				<th>
-					Parent ID
-				</th>
-				<th>
-					Sort Order
-				</th>
-				<th width="15%">
-					Action
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr data-ng-if="!vm.category">
-				<td colspan="6" align="center">
-					<img src="images/icons/gettestr-large-spinner-orange.gif"/>
-				</td>
-			</tr>
-			<tr data-ng-if="vm.category.elements == 0">
-				<td colspan="6" align="center">
-					<div class="alert alert-danger alert-dismissible">
-						<strong>Warning!</strong> Empty Data.
-					</div>
-				</td>
-			</tr>
-			<tr data-ng-repeat="c in vm.category.elements">
-				<td>
-					{{$index + 1 + vm.pageSize}}
-				</td>
-				<td>
-					<span data-ng-bind="c.detail[0].categories_name"></span>
-				</td>
-				<td>
-					{{c.parent_id}}
-				</td>
-				<td>
-					{{c.sort_order}}
-				</td>
-				<td>
-					<a ui-sref="category.edit({id:c.categories_id})"
-						class="btn btn-default btn-xs"
-						uib-tooltip="Edit"
-					>
-						<span class="fa fa-edit"></span>
-					</a>
-					<button
-						class="btn btn-danger btn-xs"
-						data-ng-click="vm.remove($index, c);"
-						uib-tooltip="Delete"
-					>
-						<span class="fa fa-trash"></span>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th width="5%">
+						#
+					</th>
+					<th width="40%">
+						Name
+					</th>
+					<th width="15%">
+						Parent ID
+					</th>
+					<th width="10%">
+						Sort Order
+					</th>
+					<th width="10%">
+						Action
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-if="!vm.category">
+					<td colspan="6" align="center">
+						<loading></loading>
+					</td>
+				</tr>
+				<tr data-ng-if="vm.category.elements == 0">
+					<td colspan="6" align="center">
+						<empty-data></empty-data>
+					</td>
+				</tr>
+				<tr data-ng-repeat="c in vm.category.elements">
+					<td>
+						{{$index + 1 + vm.pageSize}}
+					</td>
+					<td>
+						<span data-ng-bind="c.detail[0].categories_name"></span>
+					</td>
+					<td>
+						{{c.parent_id}}
+					</td>
+					<td>
+						{{c.sort_order}}
+					</td>
+					<td>
+						<a ui-sref="category.edit({id:c.categories_id})"
+							class="btn btn-default btn-xs"
+							uib-tooltip="Edit"
+						>
+							<span class="fa fa-edit"></span>
+						</a>
+						<button
+							class="btn btn-danger btn-xs"
+							data-ng-click="vm.remove($index, c);"
+							uib-tooltip="Delete"
+						>
+							<span class="fa fa-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<hr/>
 	<ul uib-pagination
 		total-items="vm.totalItems"

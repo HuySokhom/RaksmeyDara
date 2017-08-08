@@ -22,7 +22,8 @@ app.controller(
 				vm.title = 'Edit Category';
 				Restful.get(url + $stateParams.id).success(function(data){
 					console.log(data);
-					vm.model = data.item[0];				
+					vm.model = data.elements[0];
+					vm.model.name = data.elements[0].detail[0].categories_name;
 				});
 			}else{
 				vm.title = 'Create New Category';
@@ -52,15 +53,17 @@ app.controller(
 				]
 			};console.log(data);
 			vm.loading = true;
-			if( vm.id ){
-				Restful.put(url + vm.id, data).success(function(data){
+			if( vm.model.categories_id ){
+				Restful.put(url + vm.model.categories_id, data).success(function(data){
 					vm.service.alertMessage('<strong>Complete: </strong>Save Success.');
 					vm.loading = false;
+					vm.cancel();
 				});
 			}else{
 				Restful.post(url, data).success(function(data){
 					vm.service.alertMessage('<strong>Complete: </strong>Save Success.');
 					vm.loading = false;
+					vm.cancel();
 				});
 			}
 		};
