@@ -47,6 +47,7 @@ app.controller(
 					console.log(data);
 					vm.product = data.elements[0];
 					vm.productDescription = data.elements[0].product_detail[0];
+					vm.optionalImage = data.elements[0].image_detail;
 				});
 			}else{
 				vm.title = 'Create New Product';

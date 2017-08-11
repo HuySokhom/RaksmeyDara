@@ -108,6 +108,8 @@
                                 ngf-select="vm.uploadPic(vm.picFile, 'feature_image')"
                                 class="form-control"
                             >
+                            <i>Recommand Image Size = 440 * 600 px</i>
+                            <br/>
                             <i ng-show="form.file.$error.maxSize">
                                 File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 10M
                             </i>
@@ -151,44 +153,35 @@
                                 Option Image
                             </span>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <input
                                 type="file"
-                                ng-model="picOptFile"
+                                ng-model="vm.picOptFile"
                                 name="fileOpt"
                                 accept="image/*"
-                                ngf-max-size="2MB"
-                                ngf-model-invalid="errorFiles"
-                                ngf-select="uploadPic(picOptFile, 'optional')"
+                                ngf-max-size="10MB"
+                                ngf-model-invalid="vm.errorFiles"
+                                ngf-select="vm.uploadPic(vm.picOptFile, 'optional')"
                                 class="form-control"
                             >
                             <div ng-show="form.fileOpt.$error.maxSize" class="error">
-                                File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+                                File too large {{vm.errorFiles[0].size / 1000000|number:1}}MB: max 10M
                             </div>
-                            <span class="progress" ng-show="picOptFile.progress >= 0">
+                            <span class="progress" ng-show="vm.picOptFile.progress >= 0">
                                 <div
-                                    style="width:{{picOptFile.progress}}%"
-                                    ng-bind="picOptFile.progress + '%'"
+                                    style="width:{{vm.picOptFile.progress}}%"
+                                    ng-bind="vm.picOptFile.progress + '%'"
                                 >
                                 </div>
                             </span>
                             <span data-ng-repeat="i in vm.optionalImage">
-                                <div class="col-md-3 optional-img">
-                                    <div>
-                                        <img
-                                            class="thumb"
-                                            src="../{{i.image_thumbnail}}"
-                                        >
-                                    </div>
-                                    <button
-                                        class="btn btn-danger"
-                                        data-ng-click="removeImage($index);"
-                                        data-toggle="tooltip"
-                                        data-placement="right"
-                                        title="Remove"
-                                        tooltip
+                                <div class="col-md-3">
+                                    <img class="img-thumbnail" src="../{{i.image_thumbnail}}"/>
+                                    <button  class="btn btn-danger btn-xs"
+                                        data-ng-click="vm.removeImage($index);"
+                                        uib-tooltip="Remove"
                                     >
-                                        <i class="glyphicon glyphicon-trash"></i>
+                                        <i class="fa fa-trash"></i>
                                         Remove
                                     </button>
                                 </div>

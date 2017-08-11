@@ -110,6 +110,17 @@ class RestApiProduct extends RestApi {
             //     unset($v);
             // }
 
+			// save product images
+			$productImageObject = new ProductImageObj();
+			$productImageObject->setProductsId($productId);
+			$productImageObject->delete();
+			$fields = $params['PUT']['products_image'];
+			foreach ( $fields as $k => $v){
+				$productImageObject->setProductsId($productId);
+				$productImageObject->setProperties($v);
+				$productImageObject->insert();
+			}
+
             return array(
 				'data' => array(
 					'data' => 'update success'

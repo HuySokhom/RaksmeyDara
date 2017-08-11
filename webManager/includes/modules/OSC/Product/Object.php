@@ -44,6 +44,7 @@ class Object extends DbObj {
                 'create_by',
                 'products_status',
                 'product_detail',
+				'image_detail',
 				'products_image',
 				'products_image_thumbnail'
 			)
