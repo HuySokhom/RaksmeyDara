@@ -7,3 +7,6 @@
 .modal-content{
     border-radius: 0px;
 }
+.required{
+    color: #a94442;
+}

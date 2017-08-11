@@ -234,7 +234,7 @@ abstract class StdObject extends StdClass {
 	}
 
 	public function setCreateBy( $string ) {
-		$this->createBy = $string;
+		$this->createBy = $_SESSION['admin']['username'];//$string;
 	}
 
 	public function getUpdateBy() {

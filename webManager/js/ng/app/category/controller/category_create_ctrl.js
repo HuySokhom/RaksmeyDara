@@ -35,7 +35,7 @@ app.controller(
 			window.history.back();
 		};
 
-		vm.save = function(){console.log($scope.form.$valid);
+		vm.save = function(){
 			if (!$scope.form.$valid) {
 				$anchorScroll();
 				return;

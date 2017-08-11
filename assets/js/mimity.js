@@ -121,7 +121,7 @@ function get_current_scroll() {
     if ($('.widget-slider').exist()) {
       var widget_slider = $('.widget-slider');
       widget_slider.owlCarousel({
-        items:1,
+        items:10,
         dots: false,
         nav: true,
         navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],

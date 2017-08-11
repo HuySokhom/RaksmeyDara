@@ -231,8 +231,10 @@
   }
 
   require(DIR_WS_INCLUDES . 'template_top.php');
+  require(DIR_WS_INCLUDES . 'header.php');
 ?>
-<div class="page-content-wrap panel-body">
+ <div class="right_col" role="main" >
+<div class="">
     <table class="table table-bordered">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -250,7 +252,7 @@
         </td>
       </tr>
       <tr>
-        <td><table>
+        <td><table class="table table-bordered">
           <tr>
             <td valign="top"><table class="table datatable dataTable no-footer">
               <tr class="dataTableHeadingRow">
@@ -375,6 +377,8 @@
       </tr>
     </table>
 </div>
+
+  </div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

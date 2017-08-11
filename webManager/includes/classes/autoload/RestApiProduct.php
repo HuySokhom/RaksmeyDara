@@ -41,8 +41,6 @@ class RestApiProduct extends RestApi {
 
 	public function post($params){
 		$productObject = new ProductPostObj();
-		$userId = $this->getOwner()->getId();
-		$productObject->setCustomersId($userId);
 		$productObject->setProperties($params['POST']['products']);
 		$productObject->insert();
 		$productId = $productObject->getProductsId();
@@ -65,16 +63,19 @@ class RestApiProduct extends RestApi {
 		// save product description
 		$fields = $params['POST']['products_description'];
 		$productDetailObject = new ProductDescriptionObj();
-		foreach ( $fields as $k => $v){
-			$productDetailObject->setProductsId($productId);
-			$productDetailObject->setProperties($v);
-			$productDetailObject->insert();
-		}
+		$productDetailObject->setProductsId($productId);
+		$productDetailObject->setProperties($fields);
+		$productDetailObject->insert();
+		// foreach ( $fields as $k => $v){
+		// 	$productDetailObject->setProductsId($productId);
+		// 	$productDetailObject->setProperties($v);
+		// 	$productDetailObject->insert();
+		// }
 		unset($params);
 		return array(
-				'data' => array(
-						'id' => $productId
-				)
+			'data' => array(
+				'id' => $productId
+			)
 		);
 	}
 
@@ -86,25 +87,28 @@ class RestApiProduct extends RestApi {
 			$cols->populate();
             $col = $cols->getFirstElement();
             $col->setProductsId($productId);
-            $col->setProperties($params['PUT']);
+            $col->setProperties($params['PUT']['products']);
             $col->update();
 
             // update category to product
             $productToCategoryObject = new ProductToCategoryObj();
             $productToCategoryObject->setProductsId($productId);
-            $productToCategoryObject->setCategoriesId($params['PUT']['categories_detail']);
+            $productToCategoryObject->setCategoriesId($params['PUT']['products']['categories_id']);
             $productToCategoryObject->update();
 
             // save product description
-            $fields = $params['PUT']['product_detail'];
+            $fields = $params['PUT']['products_description'];
             $productDetailObject = new ProductDescriptionObj();
-            foreach ( $fields as $k => $v){
-                $productDetailObject->setProductsId($productId);
-                $productDetailObject->setLanguageId(1);
-                $productDetailObject->setProperties($v);
-                $productDetailObject->update();
-                unset($v);
-            }
+			$productDetailObject->setProductsId($productId);
+			$productDetailObject->setProperties($fields);
+			$productDetailObject->update();
+            // foreach ( $fields as $k => $v){
+            //     $productDetailObject->setProductsId($productId);
+            //     $productDetailObject->setLanguageId(1);
+            //     $productDetailObject->setProperties($v);
+            //     $productDetailObject->update();
+            //     unset($v);
+            // }
 
             return array(
 				'data' => array(
@@ -121,7 +125,7 @@ class RestApiProduct extends RestApi {
 			$cols->populate();
 			$col = $cols->getFirstElement();
 			$col->setProductsId($this->getId());
-			if( $params['PATCH']['name'] ){
+			if( $params['PATCH']['name'] == "update_status"){
 				$col->setProductsStatus($params['PATCH']['status']);
 				$col->updateStatus();
 			}else{

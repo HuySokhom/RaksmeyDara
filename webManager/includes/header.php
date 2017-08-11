@@ -59,19 +59,24 @@
                                         Users
                                     </a>
                                 </li>
-                                <li>
-                                    <a ui-sref="advertisement">
-                                    Advertisement
-                                    </a>
-                                </li>
-                                <li>
-                                    <a ui-sref="leason">
-                                        Leason
-                                    </a>
-                                </li>
+                               
                                 <li>
                                     <a ui-sref="content">
                                         Content
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fa fa-cog"></i> 
+                                Setting
+                                <span class="fa fa-chevron-down"></span>
+                            </a>
+                            <ul class="nav child_menu">
+                                <li>
+                                    <a href="administrators.php">
+                                        Administrators
                                     </a>
                                 </li>
                             </ul>

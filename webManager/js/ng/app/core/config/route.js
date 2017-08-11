@@ -65,16 +65,16 @@ app.config([
 				templateUrl: 'js/ng/app/image_slider/partials/index.php',
 				controller: 'image_slider_ctrl as vm'
 			})
-			// .state('user', {
-			// 	url: '/user',
-			// 	templateUrl: 'js/ng/app/user/partials/index.html',
-			// 	controller: 'user_ctrl as vm'
-			// })
-			// .state('/user/edit/:id', {
-			// 	url: '/user/edit/:id',
-			// 	templateUrl: 'js/ng/app/user/partials/user_edit.html',
-			// 	controller: 'user_edit_ctrl as vm'
-			// })
+			.state('user', {
+				url: '/user',
+				templateUrl: 'js/ng/app/user/partials/index.html',
+				controller: 'user_ctrl as vm'
+			})
+			.state('/user/edit/:id', {
+				url: '/user/edit/:id',
+				templateUrl: 'js/ng/app/user/partials/user_edit.html',
+				controller: 'user_edit_ctrl as vm'
+			})
 			// .state('/location', {
 			// 	url: '/location',
 			// 	templateUrl: 'js/ng/app/location/partials/location.html',
@@ -119,18 +119,23 @@ app.config([
 			/** End Category Route **/
 			.state('product', {
 				url: '/product',
+				template: '<div ui-view></div>',
+				redirectTo: 'product.list'
+			})
+			.state('product.list', {
+				url: '',
 				templateUrl: 'js/ng/app/product/partials/index.html',
 				controller: 'product_ctrl as vm'
 			})
-			.state('product.post', {
-				url: '/product/post',
+			.state('product.create', {
+				url: '/create',
 				templateUrl: 'js/ng/app/product/partials/product_post.html',
 				controller: 'product_post_ctrl as vm'
 			})
-			.state('/product/edit/:id', {
-				url: '/product/edit/:id',
-				templateUrl: 'js/ng/app/product/partials/product_edit.html',
-				controller: 'product_edit_ctrl as vm'
+			.state('product.edit', {
+				url: '/edit/:id',
+				templateUrl: 'js/ng/app/product/partials/product_post.html',
+				controller: 'product_post_ctrl as vm'
 			})
 			.state('/popular_location', {
 				url: '/popular_location',

@@ -1,265 +1,203 @@
-<form data-ng-submit="save();" name="myForm">
-    <h4>
-        Product Information
-    </h4>
-    <div class="row">
-        <div class="col-md-6">
-            <label>
-                Category:
-            </label>
-            <select
-                data-ng-model="categories_id"
-                data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
-                class="form-control"
-                required
-            >
-                <option value="">--Select Category--</option>
-            </select>
-            <label>
-                Property Type
-            </label>
-            <select
-                data-ng-model="property_type"
-                data-ng-options="p for p in propertyTypes"
-                class="form-control"
-                required
-            >
-                <option value="">--Select Category--</option>
-            </select>
-            <label>
-                Title EN:
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                data-ng-model="title_en"
-                required
-            />
-            <label>
-                Title KH:
-            </label>
-            <input
-                type="text"
-                class="form-control"
-                data-ng-model="title_kh"
-                required
-            />
-            <label>
-                Price:
-            </label>
-            <input type="text" class="form-control" required data-ng-model="price"/>
-            <label>
-                Image:
-            </label>
-            <input
-                type="file"
-                ng-model="picFile"
-                name="file"
-                accept="image/*"
-                ngf-max-size="2MB"
-                ngf-model-invalid="errorFiles"
-                ngf-select="uploadPic(picFile, 'feature_image')"
-                class="form-control"
-            >
-            <i ng-show="myForm.file.$error.maxSize">
-                File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-            </i>
-            <img
-                ng-show="image"
-                class="thumb"
-                src="../images/{{image_thumbnail}}"
-            >
-            <span class="progress" ng-show="picFile.progress >= 0">
-                <div
-                    style="width:{{picFile.progress}}%"
-                    ng-bind="picFile.progress + '%'"
-                >
-                </div>
-            </span>
-            <span ng-show="picFile.result">Upload Successful</span>
-            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-        </div>
-        <div class="col-md-6">
-            <label>
-                City / Province
-            </label>
-            <select
-                data-ng-model="province_id"
-                data-ng-options="p.id as p.name for p in provinces.elements"
-                class="form-control"
-                data-ng-change="initDistrict(province_id);"
-                required
-            >
-                <option value="">--Select Province--</option>
-            </select>
-
-            <label>
-                Khan/District
-            </label>
-            <select
-                data-ng-model="district_id"
-                data-ng-options="d.id as d.name_en for d in districts.elements"
-                class="form-control"
-                data-ng-change="initCommune(district_id);"
-                required
-            >
-                <option value="">--Select District--</option>
-            </select>
-            <label>
-                Sangkat / Commune
-            </label>
-            <select
-                data-ng-model="commune_id"
-                data-ng-options="c.id as c.name_en for c in communes.elements"
-                class="form-control"
-                required
-            >
-                <option value="">--Select Commune--</option>
-            </select>
-            <label>
-                Bed Rooms
-            </label>
-            <select
-                ng-model="bed_rooms"
-                class="form-control"
-                ng-options="n for n in [] | rangeNumber:20"
-            >
-                <option value="">--Select Bed Rooms--</option>
-            </select>
-
-            <label>
-                Bath rooms
-            </label>
-            <select
-                ng-model="bath_rooms"
-                class="form-control"
-                ng-options="n for n in [] | rangeNumber:20"
-            >
-                <option value="">--Select Bath Rooms--</option>
-            </select>
-            <label>
-                Number of Floors
-            </label>
-            <select
-                ng-model="number_of_floors"
-                class="form-control"
-                ng-options="n for n in [] | rangeNumber:50"
-            >
-                <option value="">--Select Floors--</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="dcol-md-12">
-            <div class="col-md-6">
-                <label>
-                    Description EN:
-                </label>
-                <textarea
-                    class="form-control"
-                    data-ng-model="content_en"
-                    ui-tinymce="tinymceOptions"
-                    rows="15"
-                ></textarea>
-            </div>
-            <div class="col-md-6">
-                <label>
-                    Description KH:
-                </label>
-                <textarea
-                    class="form-control"
-                    ui-tinymce="tinymceOptions"
-                    data-ng-model="content_kh"
-                    rows="15"
-                ></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <label>
-            Drag and drop your location:
-        </label>
-        <ui-gmap-google-map
-                center="map.center"
-                zoom="map.zoom"
-                draggable="true"
-                options="options"
-        >
-            <ui-gmap-marker
-                    coords="marker.coords"
-                    options="marker.options"
-                    events="marker.events"
-                    idkey="marker.id"
-            >
-            </ui-gmap-marker>
-        </ui-gmap-google-map>
-    </div>
-    <div class="col-md-12 row">
-        <label>
-            Optional Image:
-        </label>
-        <input
-            type="file"
-            ng-model="picOptFile"
-            name="fileOpt"
-            accept="image/*"
-            ngf-max-size="2MB"
-            ngf-model-invalid="errorFiles"
-            ngf-select="uploadPic(picOptFile, 'optional')"
-            class="form-control"
-        >
-        <div ng-show="myForm.fileOpt.$error.maxSize" class="error">
-            File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-        </div>
-        <span class="progress" ng-show="picOptFile.progress >= 0">
-            <div
-                style="width:{{picOptFile.progress}}%"
-                ng-bind="picOptFile.progress + '%'"
-            >
-            </div>
-        </span>
-        <span data-ng-repeat="i in optionalImage">
-            <div class="col-md-3 optional-img">
-                <div>
-                    <img
-                        class="thumb"
-                        src="../images/{{i.image_thumbnail}}"
-                    >
-                </div>
-                <button
-                    class="btn btn-danger"
-                    data-ng-click="removeImage($index);"
-                    data-toggle="tooltip"
-                    data-placement="right"
-                    title="Remove"
-                    tooltip
-                >
-                    <i class="glyphicon glyphicon-trash"></i>
-                    Remove
+<div class="x_panel">
+    <div class="x_title">
+        <h2>{{vm.title}}</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li>
+                <button onclick="window.history.go(-1); return false;" class="btn btn-default">
+                    <i class="fa fa-backward"></i>
+                    Back
                 </button>
-            </div>
-        </span>
-        <br/>
+            </li>
+        </ul>
+        <div class="clearfix"></div> 
     </div>
-    <div class="row col-md-12">
-        <div class="align-right">
-            <button
-                class="btn btn-primary"
-                data-ng-disabled="!disabled"
-            >
-                <i class="fa fa-save" data-ng-show="disabled"></i>
-                <i class="fa fa-refresh fa-spin" data-ng-hide="disabled"></i>
-                Save
-            </button>
-        </div>
-</form>
-<div class="align-left">
-    <button
-        class="btn btn-default"
-        onclick="location.href='#/product';"
-    >
-        <i class="fa fa-close"></i>
-        Close
-    </button>
-</div>
+    <div class="x_content">
+        <form name="form" class="form-horizontal" novalidate>            
+            <div class="row">
+                 <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.category.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Category
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <select data-ng-model="vm.product.categories_id" name="category"
+                                data-ng-options="c.categories_id as c.detail[0].categories_name for c in vm.categoryList.elements"
+                                class="form-control"
+                                required
+                            >
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.name.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Name
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text"
+                                class="form-control"
+                                data-ng-model="vm.productDescription.products_name"
+                                name="name"
+                                placeholder="Name"
+                                required="required" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.price.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Price
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number"
+                                class="form-control"
+                                data-ng-model="vm.product.products_price"
+                                name="price"
+                                placeholder="Price"
+                                required="required" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.discount.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Discount
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number"
+                                class="form-control"
+                                data-ng-model="vm.product.products_discount"
+                                name="discount"
+                                placeholder="Discount"/>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.discount.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Image
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                             <input
+                                type="file"
+                                ng-model="vm.picFile"
+                                name="file"
+                                accept="image/*"
+                                ngf-max-size="10MB"
+                                ngf-model-invalid="errorFiles"
+                                ngf-select="vm.uploadPic(vm.picFile, 'feature_image')"
+                                class="form-control"
+                            >
+                            <i ng-show="form.file.$error.maxSize">
+                                File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 10M
+                            </i>
+                            <img ng-show="vm.product.products_image_thumbnail"
+                                class="img-thumbnail"
+                                style="width:150px"
+                                src="../{{vm.product.products_image_thumbnail}}"/>
+                            <span class="progress" ng-show="vm.picFile.progress >= 0">
+                                <div style="width:{{picFile.progress}}%"
+                                    ng-bind="vm.picFile.progress + '%'">
+                                </div>
+                            </span>
+                            <span ng-show="vm.picFile.result">Upload Successful</span>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.discount.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Description
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <textarea
+                                class="form-control"
+                                ui-tinymce="vm.tinymceOptions"
+                                data-ng-model="vm.productDescription.products_description"
+                                rows="15"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.discount.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Option Image
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input
+                                type="file"
+                                ng-model="picOptFile"
+                                name="fileOpt"
+                                accept="image/*"
+                                ngf-max-size="2MB"
+                                ngf-model-invalid="errorFiles"
+                                ngf-select="uploadPic(picOptFile, 'optional')"
+                                class="form-control"
+                            >
+                            <div ng-show="form.fileOpt.$error.maxSize" class="error">
+                                File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+                            </div>
+                            <span class="progress" ng-show="picOptFile.progress >= 0">
+                                <div
+                                    style="width:{{picOptFile.progress}}%"
+                                    ng-bind="picOptFile.progress + '%'"
+                                >
+                                </div>
+                            </span>
+                            <span data-ng-repeat="i in vm.optionalImage">
+                                <div class="col-md-3 optional-img">
+                                    <div>
+                                        <img
+                                            class="thumb"
+                                            src="../{{i.image_thumbnail}}"
+                                        >
+                                    </div>
+                                    <button
+                                        class="btn btn-danger"
+                                        data-ng-click="removeImage($index);"
+                                        data-toggle="tooltip"
+                                        data-placement="right"
+                                        title="Remove"
+                                        tooltip
+                                    >
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                        Remove
+                                    </button>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <save-template cancel="vm.cancel()" save="vm.save()" disable="vm.loading"></save-template>	
+        </form>
+    </div>
 </div>

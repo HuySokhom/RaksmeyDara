@@ -24,8 +24,6 @@ class Object extends DbObj {
                 'products_name',
                 'products_description',
                 'products_viewed',
-                'benefits',
-                'skill'
             )
         );
         return parent::toArray($args);
@@ -36,9 +34,7 @@ class Object extends DbObj {
 			SELECT
 				products_name,
 				products_description,
-				products_viewed,
-				benefits,
-				skill
+				products_viewed
 			FROM
 				products_description
 			WHERE
@@ -65,9 +61,7 @@ class Object extends DbObj {
 				products_description
 			SET 
 				products_name = '" .  $this->dbEscape( $this->getProductsName() ). "',
-				products_description = '" .  $this->dbEscape( $this->getProductsDescription() ). "',
-				benefits = '" .  $this->dbEscape( $this->getBenefits() ). "',
-				skill = '" .  $this->dbEscape( $this->getSkill() ). "'
+				products_description = '" .  $this->dbEscape( $this->getProductsDescription() ). "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 					AND
@@ -95,18 +89,14 @@ class Object extends DbObj {
 				products_name,
 				products_description,
 				products_id,
-				language_id,
-				skill,
-				benefits
+				language_id
 			)
 				VALUES
 			(
  				'" . $this->dbEscape( $this->getProductsName() ) . "',
  				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
 				'" . $this->getProductsId() . "',
-				'" . $this->getLanguageId() . "',
-				'" . $this->getSkill() . "',
-				'" . $this->getBenefits() . "'
+				'" . $this->getLanguageId() . "'
 			)
 		");
     }

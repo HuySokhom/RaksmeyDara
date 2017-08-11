@@ -75,6 +75,7 @@
     type="text/javascript"
     src="js/ng/app/category/controller/category_create_ctrl.js"
 ></script> 
+<!-- image slider ctrl -->
 <script
     type="text/javascript"
     src="js/ng/app/image_slider/controller/image_slider_ctrl.js"
@@ -84,3 +85,30 @@
     src="js/ng/app/image_slider/directive/image_slider_popup.js"
 ></script> 
 
+<!-- user ctrl -->
+<script
+    type="text/javascript"
+    src="js/ng/app/user/controller/user_ctrl.js"
+></script> 
+<script
+    type="text/javascript"
+    src="js/ng/app/user/directive/user_edit_ctrl.js"
+></script> 
+<!-- content ctrl -->
+<script
+    type="text/javascript"
+    src="js/ng/app/content/controller/content_ctrl.js"
+></script> 
+<!-- content ctrl -->
+<script
+    type="text/javascript"
+    src="js/ng/app/product/controller/product_ctrl.js"
+></script> 
+<script
+    type="text/javascript"
+    src="js/ng/app/product/controller/product_edit_ctrl.js"
+></script> 
+<script
+    type="text/javascript"
+    src="js/ng/app/product/controller/product_post_ctrl.js"
+></script> 
