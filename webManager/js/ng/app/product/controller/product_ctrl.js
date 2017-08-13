@@ -83,7 +83,7 @@ app.controller(
 		};
 		// search functionality
 		vm.filter = function(){
-			params.filter_text = vm.filterText;
+			params.search_title = vm.filterText;
 			params.category_id = vm.category_id;
 			init(params);
 		};

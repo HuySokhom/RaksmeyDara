@@ -21,10 +21,10 @@ class RestApiProduct extends RestApi {
 		$col = new ProductPostCol();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_title'] ? $col->filterByName($params['GET']['search_title']) : '';
-		$params['GET']['sort_by'] ? $col->filterByPlan($params['GET']['sort_by']) : '';
+		
 
-		$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
-		$params['GET']['customer_id'] ? $col->filterByCustomersId($params['GET']['customer_id']) : '';
+		$params['GET']['category_id'] ? $col->filterByCategoryId($params['GET']['category_id']) : '';
+		
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
