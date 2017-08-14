@@ -11,36 +11,16 @@
 	$product_info_query = tep_db_query("
 		select
 			p.products_id,
-			p.customers_id,
-			cu.company_name,
-			cu.photo_thumbnail,
-			cu.customers_email_address,
-			cu.customers_address,
-			cu.customers_website,
-			cu.customers_telephone,
-			cu.detail,
-			p.products_kind_of,
-			p.gender,
-			p.number_of_hire,
+			p.products_price,
+			p.products_discount,
+			p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price,
 			pd.products_name,
-			l.name as province_name,
-			pd.products_description,
-			pd.skill,
-			pd.benefits,
-			pd.products_viewed,
-			p.salary,
-			DATE_FORMAT(p.products_date_added, '%d/%M/%Y') as products_date_added,
-			DATE_FORMAT(p.products_close_date, '%d/%M/%Y') as products_close_date
+			pd.products_description,			
+			pd.products_viewed
 		from
-			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, customers cu
+			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
 		where
 			p.products_status = 1
-			    and 
-            p.is_publish = 1
-				and
-			cu.customers_id = p.customers_id
-				and
-			l.id = p.province_id
 				and
 			p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
 				and
@@ -55,14 +35,11 @@
 		select
 			p.products_id,
 			p.customers_id,
-			cu.company_name,
 			pd.products_name
 		from
-			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, customers cu
+			" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
 		where
-			p.products_status = '1'
-				and
-			cu.customers_id = p.customers_id
+			p.products_status = '1'				
 				and
 			p.products_id != '".(int)$_GET['products_id'] ."'
 				and
@@ -70,7 +47,7 @@
 				and
 			pd.language_id = '" . (int)$languages_id . "'
 		order by
-        	p.products_promote desc, rand(), p.products_close_date desc
+        	p.products_id 
 		limit 15
 	");
 	$array_hot = array();
@@ -79,18 +56,13 @@
 	}
 
 ?>
-<br>
-<div class="container">
 <?php
   if (tep_db_num_rows($product_info_query) < 1) {
 ?>
 	<br>
-	<div class="col-md-3">
-		<div class="filter-stacked">
-			<?php include('advanced_search_box_right.php'); ?>
-		</div>
-	</div>
-	<div class="col-md-8">
+	<br>
+	<br>
+	<div class="container">
 		<div class="alert alert-warning"><?php echo TEXT_PRODUCT_NOT_FOUND; ?></div>
 		<div class="pull-right">
 			<?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-mail-forward', tep_href_link(FILENAME_DEFAULT)); ?>
@@ -111,174 +83,350 @@
     ");
 
 ?>
-	  <div class="row">
-		  <div class="col-sm-8">
-			  <div class="position-header">
-				  <h1>
-					  <?php echo $product_info['products_name'];?>
-						<!--<span>Urgent</span>-->
-				  </h1>
-			  </div><!-- /.position-header -->
 
-			  <div class="position-general-information">
-				  <dl>
-					  <dt>Location</dt>
-					  <dd><?php echo $product_info['province_name'];?></dd>
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb-container">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li class="active">
+		  	<?php 
+				echo $product_info['products_name'];
+			?>
+		  </li>
+        </ol>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
 
-					  <dt>Public Date</dt>
-					  <dd><?php echo $product_info['products_date_added'];?></dd>
-					  <dt>Close Date</dt>
-					  <dd><?php echo $product_info['products_close_date'];?></dd>
+    <!-- Main Content -->
+    <div class="container m-t-3">
+      <div class="row">
 
-					  <dt>Contract</dt>
-					  <dd><?php echo $product_info['products_kind_of'];?></dd>
+        <!-- Image List -->
+        <div class="col-sm-4">
+          <div class="image-detail">
+            <img src="images/demo/p1-1.jpg" data-zoom-image="images/demo/p1-large-1.jpg" alt="">
+          </div>
+          <div class="products-slider-detail owl-carousel owl-theme m-b-2">
+            <a href="detail.html#"><img src="images/demo/p1-1.jpg" data-zoom-image="images/demo/p1-large-1.jpg" alt="" class="img-thumbnail"></a>
+            <a href="detail.html#"><img src="images/demo/p1-2.jpg" data-zoom-image="images/demo/p1-large-2.jpg" alt="" class="img-thumbnail"></a>
+            <a href="detail.html#"><img src="images/demo/p1-3.jpg" data-zoom-image="images/demo/p1-large-3.jpg" alt="" class="img-thumbnail"></a>
+            <a href="detail.html#"><img src="images/demo/p1-4.jpg" data-zoom-image="images/demo/p1-large-4.jpg" alt="" class="img-thumbnail"></a>
+            <a href="detail.html#"><img src="images/demo/p1-1.jpg" data-zoom-image="images/demo/p1-large-1.jpg" alt="" class="img-thumbnail"></a>
+          </div>
+          <div class="title"><span>Share to</span></div>
+          <div class="share-button m-b-3">
+            <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+            <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i></button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-linkedin"></i></button>
+            <button type="button" class="btn btn-warning"><i class="fa fa-envelope"></i></button>
+          </div>
+        </div>
+        <!-- End Image List -->
 
-					  <dt>Salary</dt>
-					  <dd>
-						  <?php
-						  	if($product_info['salary'] > 0){
-								echo '$'.$product_info['salary'];
-							}else{
-								echo "Negotiable";
-							}
-						  ?>
-					  </dd>
+        <div class="col-sm-8">
+			<div class="title-detail">
+		  		<?php 
+					echo $product_info['products_name'];  
+				?>
+			</div>
+          <table class="table table-detail">
+            <tbody>
+              <tr>
+                <td>Price</td>
+                <td>
+                  <div class="price">
+                    <div>
+						<?php echo $currencies->display_price($product_info['products_latest_price'], 0);?> 
+						<span class="label label-default arrowed">
+							<?php echo doubleval($product_info['products_discount']); ?>%
+						</span>
+					</div>
+                    <span class="price-old"><?php echo $currencies->display_price($product_info['products_price'], 0);?></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Availability</td>
+                <td><span class="label label-success arrowed">Ready Stock</span></td>
+              </tr>
+              <tr></tr>
+                <td>View</td>
+                <td>
+					<span class="label label-warning arrowed">
+						<?php echo $product_info['products_viewed'];?>
+					</span>
+				</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-					  <dt>Number Of Hire</dt>
-					  <dd><?php echo $product_info['number_of_hire'];?></dd>
+        <div class="col-md-8">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+				<a href="#desc" aria-controls="desc" role="tab" data-toggle="tab">
+					Description
+				</a>
+			</li>
+          </ul>
+          <!-- End Nav tabs -->
 
-					  <dt>Gender</dt>
-					  <dd><?php echo $product_info['gender'];?></dd>
+          <!-- Tab panes -->
+          <div class="tab-content tab-content-detail">
 
-					  <dt>Job ID</dt>
-					  <dd>#<?php echo $product_info['products_id'];?></dd>
+              <!-- Description Tab Content -->
+              <div role="tabpanel" class="tab-pane active" id="desc">
+                <div class="well">
+                  <?php 
+				  	echo $product_info['products_description'];
+				  ?>
+                </div>
+              </div>
+              <!-- End Description Tab Content -->
+          </div>
+          <!-- End Tab panes -->
 
-					  <dt>View</dt>
-					  <dd>
-						  <?php echo $product_info['products_viewed'];?>
-					  </dd>
-				  </dl>
-			  </div><!-- /.position-general-information -->
+        </div>
+      </div>
 
-			  <h3 class="page-header background-header">Description, duties, responsibilities</h3>
-			  <p>
-				  <?php echo $product_info['products_description'];?>
-			  </p>
+      <!-- Related Products -->
+      <div class="row m-t-3">
+        <div class="col-xs-12">
+          <div class="title"><span>Related Products</span></div>
+          <div class="related-product-slider owl-carousel owl-theme owl-controls-top-offset">
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p1-1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
+                  </div>
+                  <div class="tags tags-left">
+                    <span class="label-tags"><span class="label label-danger arrowed-right">Sale</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">WranglerGrey Printed Slim Fit Round Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-default">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p2-1.jpg">
+                  </a>
+                  <div class="tags tags-left">
+                    <span class="label-tags"><span class="label label-success arrowed-right">New Arrivals</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">CelioKhaki Printed Round Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p3-1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-info arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">CelioOff White Printed Round Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-success">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p4-1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-primary arrowed">Popular</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">Levi'sNavy Blue Printed Round Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-danger">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p5-1.jpg">
+                  </a>
+                  <div class="tags tags-left">
+                    <span class="label-tags"><span class="label label-primary arrowed-right">Pupolar</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">IncultAcid Wash Raglan Crew Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-danger arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/p6-1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Hot Item</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">Avoir EnvieOlive Printed Round Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-success arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+            <div class="box-product-outer">
+              <div class="box-product">
+                <div class="img-wrapper">
+                  <a href="detail.html">
+                    <img alt="Product" src="images/demo/vneck1.jpg">
+                  </a>
+                  <div class="tags">
+                    <span class="label-tags"><span class="label label-danger arrowed">Sale</span></span>
+                    <span class="label-tags"><span class="label label-default arrowed">Collection</span></span>
+                  </div>
+                  <div class="option">
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
+                    <a href="detail.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
+                  </div>
+                </div>
+                <h6><a href="detail.html">PhosphorusGrey Melange Printed V Neck T-Shirt</a></h6>
+                <div class="price">
+                  <div>$13.50 <span class="label-tags"><span class="label label-danger arrowed">-10%</span></span></div>
+                  <span class="price-old">$15.00</span>
+                </div>
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star-o"></i>
+                  <a href="detail.html#">(5 reviews)</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Related Products -->
 
-			  <h3 class="page-header background-header">Other benefits</h3>
-			  <?php echo $product_info['benefits'];?>
-
-			  <h3 class="page-header background-header">Personality requirements and skills</h3>
-			  <?php echo $product_info['skill'];?>
-
-			  <h3 class="page-header background-header">About Company</h3>
-			  <?php echo $product_info['detail'];?>
-		  </div><!-- /.col-* -->
-
-		  <div class="col-sm-4">
-			  <div class="company-card">
-				  <div class="company-card-image">
-					  <a href="<?php echo tep_href_link(FILENAME_INFORMATION, 'info_id=' . $product_info['customers_id']) ?>">
-						  <img src="images/<?php echo $product_info['photo_thumbnail'];?>" alt=""></a>
-					  </a>
-				  </div><!-- /.company-card-image -->
-
-				  <div class="company-card-data">
-					  <dl>
-						  <dt>Website</dt>
-						  <dd>
-							  <?php
-								  if($product_info['customers_website']){
-									  echo '
-										  <a href="http://' . $product_info['customers_website'] . '" target="_blank">
-											  ' . $product_info['customers_website'] . '
-										  </a>';
-								  }else{
-									  echo 'N/A';
-								  }
-							  ?>
-						  </dd>
-
-						  <dt>E-mail</dt>
-						  <dd>
-							  <a href="mailto:<?php echo $product_info['customers_email_address'];?>">
-								  <?php echo $product_info['customers_email_address'];?>
-							  </a>
-						  </dd>
-
-						  <dt>Phone</dt>
-						  <dd><?php echo $product_info['customers_telephone'];?></dd>
-
-						  <dt>Address</dt>
-						  <dd>
-							  <?php echo $product_info['customers_address'];?>
-						  </dd>						  
-					  </dl>
-				  </div><!-- /.company-card-data -->
-			  </div><!-- /.company-card -->
-
-			  <div class="hero-content-carousel">
-				  <h2 style="color: #fff;">Hot Jobs</h2>
-				  <ul class="cycle-slideshow vertical"
-					  data-cycle-fx="carousel"
-					  data-cycle-slides="li"
-					  data-cycle-carousel-visible="10"
-					  data-cycle-carousel-vertical="true"
-				  >
-					  <?php
-					  	foreach($array_hot as $hot){
-							echo '
-								<li>
-									<a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $hot['products_id']) .'"
-									>
-										' . $hot['products_name'] . '
-									</a>
-									' . $hot['company_name']. '
-								</li>
-							';
-						}
-					  ?>
-				  </ul>
-				  <a href="positions.php" class="hero-content-show-all">Show All</a>
-			  </div>
-			  <div class="widget">
-                  <img src="images/free-ads.jpg" class="img-responsive">
-			  </div><!-- /.widget -->
-		  </div><!-- /.col-* -->
-	  </div><!-- /.row -->
-	  <?php
+    </div>
+    <!-- End Main Content -->
+<?php
   }
 ?>
-</div><!-- /.container -->
-<br><br>
+
+
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
-<script>
-
-	$(function() {
-		$('form').submit(function (e) {
-			var form = {
-				name: $('#name').val(),
-				email: $('#email').val(),
-				enquiry: $('#text').val()
-			};
-			e.preventDefault();
-			console.log(form);
-			$.ajax({
-				type: 'POST',
-				url: 'api/SendMail',
-				data: form,
-				success: function (response) {
-					console.log(response);
-					if (response == 0) {
-						// ============================ Not here, this would be too late
-						span.text('email does not exist');
-					}
-				}
-			});
-		});
-	});
-
-</script>

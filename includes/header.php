@@ -86,7 +86,7 @@
                         'categories_id',
                         tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
                         NULL,
-                        'id="entryCategories" class="selectpicker"');
+                        'id="entryCategories" class="selectpicker hidden-xs"');
                   ?>
                 <button type="submit" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
               </div>
@@ -172,10 +172,7 @@
               <?php
                 echo tep_get_categories_list();
                 ?>
-              <li><a href="products.html">Products</a></li>
-              <li><a href="cart.html">Shopping Cart</a></li>
-              <li><a href="checkout.html">Checkout</a></li>
-              <li class="dropdown">
+              <li class="dropdown hide">
                 <a href="login.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Pages <span class="caret"></span>
                 </a>
@@ -220,55 +217,6 @@
                       <li><a href="account-history.html">Order History</a></li>
                       <li><a href="account-password.html">Change Password</a></li>
                     </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown mega-menu">
-                <a href="login.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  Mega Menu <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <div class="mega-menu-content">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <ul class="list-unstyled">
-                            <li><p><strong>Menu Title</strong></p></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                            <li><a href="products.html"> Link Item </a></li>
-                          </ul>
-                        </div>
-                        <div class="col-sm-3">
-                          <div class="thumbnail blog-list">
-                            <a href="detail.html"><img src="images/demo/mega-menu3.jpg" alt=""></a>
-                            <div class="caption">
-                              <h4>Lorem ipsum dolor sit</h4>
-                              <p class="visible-lg">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                              <div class="text-right"><a href="detail.html" class="btn btn-theme btn-sm"><i class="fa fa-long-arrow-right"></i> More</a></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                          <div class="row">
-                            <div class="col-xs-6 col-sm-12">
-                              <a href="products.html" class="thumbnail"><img src="images/demo/mega-menu1.jpg" alt=""></a>
-                            </div>
-                            <div class="col-xs-6 col-sm-12">
-                              <a href="products.html" class="thumbnail"><img src="images/demo/mega-menu2.jpg" alt=""></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                          <a href="products.html" class="thumbnail"><img src="images/demo/mega-menu.jpg" alt=""></a>
-                        </div>
-                      </div>
-                    </div>
                   </li>
                 </ul>
               </li>

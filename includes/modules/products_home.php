@@ -57,7 +57,7 @@
           <?php 
             foreach ($array_image as $value) {
                 echo ' <div class="item">
-                  <a href="" class="hidden-xs"><img src="'. $value['image'] .'" alt="Slider"></a>
+                  <a href=""><img src="'. $value['image'] .'" alt="Slider"></a>
                 </div>';
             }
           ?>
@@ -69,13 +69,13 @@
     <div class="container m-t-2">
       <div class="row">
         <div class="col-md-12">
-
           <!-- Featured -->
           <div class="title"><span>Featured Products</span></div>
-          <?php /*
+          <div class="product-slider owl-carousel owl-theme owl-controls-top-offset">
+          <?php 
               foreach ($product_array as $product) {
                   echo ' 
-                    <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
+                    <div class="box-product-outer">
                       <div class="box-product">
                         <div class="img-wrapper">
                           <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) .'">
@@ -99,188 +99,8 @@
                       </div>
                     </div>
                   ';
-              }*/
+              }
           ?>
-          <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo1.jpg">
-                </a>
-              </div>
-              <h6><a href="detail.html">IncultGeo Print Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-danger">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo2.jpg">
-                </a>
-                <div class="tags">
-                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
-                </div>
-                <div class="tags tags-left">
-                  <span class="label-tags"><span class="label label-success arrowed-right">Sale</span></span>
-                </div>
-                <div class="option">
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                </div>
-              </div>
-              <h6><a href="detail.html">Tommy HilfigerNavy Blue Printed Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-primary">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="index.html#">(5 reviews)</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo3.jpg">
-                </a>
-                <div class="tags">
-                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
-                </div>
-                <div class="tags tags-left">
-                  <span class="label-tags"><span class="label label-primary arrowed-right">Sale</span></span>
-                </div>
-                <div class="option">
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                </div>
-              </div>
-              <h6><a href="detail.html">WranglerNavy Blue Solid Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-success">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="index.html#">(5 reviews)</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-lg-3 visible-xs visible-lg box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo4.jpg">
-                </a>
-                <div class="tags">
-                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
-                </div>
-                <div class="tags tags-left">
-                  <span class="label-tags"><span class="label label-danger arrowed-right">Sale</span></span>
-                </div>
-                <div class="option">
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                </div>
-              </div>
-              <h6><a href="detail.html">NikeAs Matchup -Pq Grey Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-danger">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="index.html#">(5 reviews)</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-lg-3 visible-xs visible-lg box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo4.jpg">
-                </a>
-                <div class="tags">
-                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
-                </div>
-                <div class="tags tags-left">
-                  <span class="label-tags"><span class="label label-danger arrowed-right">Sale</span></span>
-                </div>
-                <div class="option">
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                </div>
-              </div>
-              <h6><a href="detail.html">NikeAs Matchup -Pq Grey Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-danger">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="index.html#">(5 reviews)</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-lg-3 visible-xs visible-lg box-product-outer">
-            <div class="box-product">
-              <div class="img-wrapper">
-                <a href="detail.html">
-                  <img alt="Product" src="images/demo/polo4.jpg">
-                </a>
-                <div class="tags">
-                  <span class="label-tags"><span class="label label-default arrowed">Featured</span></span>
-                </div>
-                <div class="tags tags-left">
-                  <span class="label-tags"><span class="label label-danger arrowed-right">Sale</span></span>
-                </div>
-                <div class="option">
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-align-left"></i></a>
-                  <a href="index.html#" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i class="fa fa-heart"></i></a>
-                </div>
-              </div>
-              <h6><a href="detail.html">NikeAs Matchup -Pq Grey Polo T-Shirt</a></h6>
-              <div class="price">
-                <div>$13.50 <span class="label-tags"><span class="label label-danger">-10%</span></span></div>
-                <span class="price-old">$15.00</span>
-              </div>
-              <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="index.html#">(5 reviews)</a>
-              </div>
-            </div>
-          </div>
           <!-- End Featured -->
         </div>
 
@@ -328,3 +148,4 @@
 
     </div>
     <!-- End Main Content -->
+</div>
