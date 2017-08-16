@@ -42,31 +42,25 @@
     /******************************************************************************************/
     $listing_sql = "
       select
-          DATE_FORMAT(p.products_close_date, '%d/%m/%Y') as products_close_date,
           pd.products_name,
           pd.products_viewed,
-          cu.photo_thumbnail,
           p.products_id,
-          p.products_promote,
-          cu.company_name,
-          l.name as location
+          p.products_image_thumbnail,
+          p.products_price,
+          p.products_discount,
+          p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price
       from
-          products_description pd, products p, customers cu, location l
+          products_description pd, products p
       where
           p.products_status = 1
               and
           pd.products_id = p.products_id
               and
-          l.id = p.province_id
-              and
-          cu.customers_id = p.customers_id
-              and
           pd.language_id = " . (int)$languages_id . "
               and
           p.categories_id = '" . (int)$current_category_id . "'
       ORDER BY
-          p.products_promote DESC,
-          p.products_close_date DESC
+          p.products_id DESC
       ";
 
 ?>
