@@ -107,7 +107,7 @@
       </div>
 
       <!-- Brand & Clients -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-xs-12 m-t-1">
           <div class="title"><span>Brand & Clients</span></div>
           <div class="brand-slider owl-carousel owl-theme owl-controls-top-offset">
@@ -143,7 +143,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- End Brand & Clients -->
 
     </div>
