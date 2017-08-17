@@ -139,11 +139,14 @@
           </div>
           <div class="title"><span>Share to</span></div>
           <div class="share-button m-b-3">
-            <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+            <!-- <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
             <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
             <button type="button" class="btn btn-danger"><i class="fa fa-google-plus"></i></button>
             <button type="button" class="btn btn-primary"><i class="fa fa-linkedin"></i></button>
-            <button type="button" class="btn btn-warning"><i class="fa fa-envelope"></i></button>
+            <button type="button" class="btn btn-warning"><i class="fa fa-envelope"></i></button> -->
+            
+            <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+            <div class="addthis_inline_share_toolbox_07k1"></div>
           </div>
         </div>
         <!-- End Image List -->

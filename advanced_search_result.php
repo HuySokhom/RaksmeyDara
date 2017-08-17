@@ -361,7 +361,7 @@
 
 ?>
   <div class="margin-top">
-    <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);?>
+    <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);print_r($listing_sql);?>
   </div>
 
   <br />

@@ -4,7 +4,7 @@
     <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                <a href="" class="site_title"><i class="fa fa-home"></i> 
+                <a href="index.php" class="site_title"><i class="fa fa-home"></i> 
                     <span><?php echo STORE_NAME;?></span>
                 </a>
             </div>
@@ -49,18 +49,18 @@
                                         Products
                                     </a>
                                 </li>
-                                 <li ui-sref-active="active">
+                                <li ui-sref-active="active">
                                     <a ui-sref="slider">
                                         Image Slider
                                     </a>
                                 </li>
-                                <li ui-sref-active="active">
+                                <!-- <li ui-sref-active="active">
                                     <a ui-sref="user">
                                         Users
                                     </a>
-                                </li>
+                                </li> -->
                                
-                                <li>
+                                <li ui-sref-active="active">
                                     <a ui-sref="content">
                                         Content
                                     </a>

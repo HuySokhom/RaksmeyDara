@@ -79,7 +79,8 @@
               </div>
             </div> -->
             <div class="input-group">
-              <input type="text" class="form-control search-input" aria-label="Search here..." placeholder="Search here...">
+              <input type="text" class="form-control search-input" aria-label="Search..."
+               placeholder="Search..." name="keywords">
               <div class="input-group-btn">
                  <?php
                     echo tep_draw_pull_down_menu(

@@ -13,7 +13,8 @@ app.config([
 			.state('content', {
 				url: '/content',
 				templateUrl: 'js/ng/app/content/partials/index.html',
-				controller: 'content_ctrl as vm'
+				controller: 'content_ctrl as vm',
+				data: { pageTitle: 'Content' + name}
 			})
 			.state('license', {
 				url: '/license',
@@ -63,7 +64,8 @@ app.config([
 			.state('slider', {
 				url: '/slider',
 				templateUrl: 'js/ng/app/image_slider/partials/index.php',
-				controller: 'image_slider_ctrl as vm'
+				controller: 'image_slider_ctrl as vm',
+				data: { pageTitle: 'Image Slider' + name}
 			})
 			.state('user', {
 				url: '/user',
@@ -125,17 +127,20 @@ app.config([
 			.state('product.list', {
 				url: '',
 				templateUrl: 'js/ng/app/product/partials/index.html',
-				controller: 'product_ctrl as vm'
+				controller: 'product_ctrl as vm',
+				data: { pageTitle: 'Product List' + name}
 			})
 			.state('product.create', {
 				url: '/create',
 				templateUrl: 'js/ng/app/product/partials/product_post.html',
-				controller: 'product_post_ctrl as vm'
+				controller: 'product_post_ctrl as vm',
+				data: { pageTitle: 'Create Product' + name}
 			})
 			.state('product.edit', {
 				url: '/edit/:id',
 				templateUrl: 'js/ng/app/product/partials/product_post.html',
-				controller: 'product_post_ctrl as vm'
+				controller: 'product_post_ctrl as vm',
+				data: { pageTitle: 'Edit Product' + name}
 			})
 			.state('/popular_location', {
 				url: '/popular_location',

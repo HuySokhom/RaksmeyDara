@@ -6,12 +6,7 @@
 ?>
 <br>
 <div class="container">
-  <div class="col-md-3">
-    <div class="filter-stacked">
-      <?php include('advanced_search_box_right.php');?> 
-    </div>
-  </div>
-  <div class="contentContainer col-md-9 col-sm-6 p_l_z">
+  <div class="col-md-12">
       <h4><?php echo $content['pages_title']; ?></h4>
       <p style="text-align: justify;">
           <?php echo $content['pages_content']?>
