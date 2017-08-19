@@ -5,13 +5,13 @@
         <div class="row">
           <div class="col-xs-12">
             <ul class="list-inline pull-left">
-              <li class="hidden-xs">
+              <li class="">
                 <a href="tel:<?php echo STORE_PHONE;?>">
                   <i class="fa fa-phone"></i> 
                   <?php echo STORE_PHONE;?>
                 </a>
               </li>
-              <li class="hidden-xs">
+              <li class="">
                 <a href="mailto:<?php echo STORE_OWNER_EMAIL_ADDRESS;?>">
                   <i class="fa fa-envelope"></i> 
                   <?php echo STORE_OWNER_EMAIL_ADDRESS;?>
@@ -55,9 +55,9 @@
     <!-- End Top Header -->
 
     <!-- Middle Header -->
-    <div class="middle-header">
+    <div class="">
       <div class="container">
-        <div class="row">
+        <div class="row" style="padding: 15px 0px 15px 0px;">
           <div class="col-md-3 logo">
               <?php
                 echo '<a href="' . tep_href_link('index.php') . '">
@@ -71,7 +71,7 @@
                     'get',
                     'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id();
           ?>
-          <div class="col-sm-8 col-md-6 search-box m-t-2">
+          <div class="col-sm-12 col-md-9 search-box m-t-2">
             <!-- <div class="input-group">
               <input type="text" class="form-control search-input" aria-label="Search here..." placeholder="Search here...">
               <span class="input-group-btn">
@@ -154,7 +154,7 @@
     <!-- End Middle Header -->
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-default shadow-navbar" role="navigation">
+    <nav class="middle-header navbar navbar-default shadow-navbar" role="navigation">
       <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-ex1-collapse">

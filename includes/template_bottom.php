@@ -1,3 +1,15 @@
+<?php   
+  $query = tep_db_query("
+    select *
+    from page_description
+    where pages_id in (1,2)");
+  $result = [];
+	while( $item = tep_db_fetch_array($query) ){
+		$result[] = $item ;
+  }
+  
+?>
+    
     <!-- Footer -->
     <div class="footer">
       <div class="container">
@@ -26,8 +38,18 @@
             </ul>
           </div>
           <div class="col-md-4 col-sm-6">
-            <div class="title-footer"><span>Follow Us</span></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum</p>
+            <div class="title-footer">
+              <span>
+                <?php 
+                  echo $result[1]['pages_title'];
+                ?>
+              </span>
+            </div>
+            <p>
+              <?php 
+                echo $result[1]['pages_content'];
+              ?>
+            </p>
             <ul class="follow-us">
               <li>
                 <a href="https://www.facebook.com/raksmeydaradaemtailor/" target="_blank">
@@ -42,10 +64,18 @@
           </div>
           <div class="clearfix visible-sm-block"></div>
           <div class="col-md-3 col-sm-6">
-            <div class="title-footer"><span>About Us</span></div>
+            <div class="title-footer">
+              <span>
+                <?php 
+                  echo $result[0]['pages_title'];
+                ?>
+              </span>
+            </div>
             <ul>
               <li>
-                Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et doloremmagna aliqua. Ut enim ad minim... <a href="login.html#">Read More</a>
+                <?php 
+                  echo $result[0]['pages_content'];
+                ?>
               </li>
             </ul>
           </div>
