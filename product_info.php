@@ -51,7 +51,8 @@
 		select
 			p.products_id,
 			p.products_price,
-			p.products_discount,
+      p.products_discount,
+      p.products_image_thumbnail,
 			p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price,
 			pd.products_name
 		from
@@ -221,42 +222,53 @@
       <!-- Related Products -->
       <div class="row m-t-3">
         <div class="col-xs-12">
-          <div class="title"><span>Related Products</span></div>
+        
+        <div class="title"><span>Related Products</span></div>
+        <?php                 
+            if(count($relatePost) > 0){
+        ?>
           <div class="related-product-slider owl-carousel owl-theme owl-controls-top-offset">
             <?php 
-              foreach ($relatePost as $product) {
-                  echo '
-                    <div class="box-product-outer">
-                      <div class="box-product">
-                        <div class="img-wrapper">
-                          <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
-                              <img alt="Product" src="' . $product['products_image_thumbnail'] . '">
-                          </a>
-                        </div>
-                        <h6>
-                          <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
-                            ' . $product['products_name'] . '
-                          </a>
-                        </h6>
-                        <div class="price">
-                            <div>
-                                '. $currencies->display_price($product['products_latest_price'], 0) .'
-                                <span class="label-tags">
-                                <span class="label label-danger"> '. doubleval($product['products_discount']) .'%</span>
-                                </span>
-                            </div>
-                            <span class="price-old"> '. $currencies->display_price($product['products_price'], 0) .'</span>
+                foreach ($relatePost as $product) {
+                    echo '
+                      <div class="box-product-outer">
+                        <div class="box-product">
+                          <div class="img-wrapper">
+                            <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
+                                <img alt="Product" src="' . $product['products_image_thumbnail'] . '">
+                            </a>
+                          </div>
+                          <h6>
+                            <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
+                              ' . $product['products_name'] . '
+                            </a>
+                          </h6>
+                          <div class="price">
+                              <div>
+                                  '. $currencies->display_price($product['products_latest_price'], 0) .'
+                                  <span class="label-tags">
+                                  <span class="label label-danger"> '. doubleval($product['products_discount']) .'%</span>
+                                  </span>
+                              </div>
+                              <span class="price-old"> '. $currencies->display_price($product['products_price'], 0) .'</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    ';
-              }
+                      ';
+                }
+              
             ?>
           </div>
+          
+      <?php       
+        }else{
+          echo '<div class="col-md-12 alert alert-info">No Product Found.</div>';
+        }
+      ?>
         </div>
+        
       </div>
       <!-- End Related Products -->
-
     </div>
     <!-- End Main Content -->
 <?php
