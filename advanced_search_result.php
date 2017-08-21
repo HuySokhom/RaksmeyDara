@@ -12,8 +12,6 @@
 
   require('includes/application_top.php');
 
-  require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
-
   $error = false;
 
   if ( (isset($HTTP_GET_VARS['keywords']) && empty($HTTP_GET_VARS['keywords'])) &&
@@ -361,7 +359,7 @@
 
 ?>
   <div class="margin-top">
-    <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);print_r($listing_sql);?>
+    <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);?>
   </div>
 
   <br />
