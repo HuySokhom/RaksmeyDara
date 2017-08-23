@@ -329,7 +329,7 @@ define('TEXT_SUBMIT', 'ផ្ញើ');
 
 define('TEXT_HOME', 'ទំព័រដើម');
 define('TEXT_PRODUCTS', 'ផលិតផល');
-define('TEXT_VIEW', 'អ្នកមើល');
+define('TEXT_VIEWED', 'អ្នកមើល');
 define('TEXT_DESCRIPTION', 'ពិពណ៌នា');
 define('TEXT_AVAILABILITY', 'ភាពទំនេរ');
 define('TEXT_PRICE', 'តម្លៃ');

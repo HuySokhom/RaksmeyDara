@@ -179,11 +179,11 @@
                 <td>
                   <div class="price">
                     <div>
-						<?php echo $currencies->display_price($product_info['products_latest_price'], 0);?> 
-						<span class="label label-default arrowed">
-							<?php echo doubleval($product_info['products_discount']); ?>%
-						</span>
-					</div>
+                      <?php echo $currencies->display_price($product_info['products_latest_price'], 0);?> 
+                      <span class="label label-default arrowed">
+                        <?php echo doubleval($product_info['products_discount']); ?>%
+                      </span>
+                    </div>
                     <span class="price-old"><?php echo $currencies->display_price($product_info['products_price'], 0);?></span>
                   </div>
                 </td>
@@ -209,14 +209,12 @@
                 </td>
               </tr>
               <tr>
-              
-              </tr>
-              <td><?php echo TEXT_VIEW;?></td>
+                <td><?php echo TEXT_VIEWED;?></td>
                 <td>
-					<span class="label label-warning arrowed">
-						<?php echo $product_info['products_viewed'];?>
-					</span>
-				</td>
+                  <span class="label label-warning arrowed">
+                    <?php echo $product_info['products_viewed'];?>
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>

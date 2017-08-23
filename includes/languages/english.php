@@ -325,7 +325,7 @@ define('TEXT_SUBMIT', 'Submit');
 
 define('TEXT_HOME', 'Home');
 define('TEXT_PRODUCTS', 'Products');
-define('TEXT_VIEW', 'View');
+define('TEXT_VIEWED', 'View');
 define('TEXT_IN_STOCK', 'In stock');
 define('TEXT_OUT_OF_STOCK', 'Out of stock');
 define('TEXT_DESCRIPTION', 'Description');
