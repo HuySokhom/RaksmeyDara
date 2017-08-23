@@ -33,7 +33,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <?php
- if ($category_depth == 'products' || (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id']))) {
+ if ($category_depth == 'nested' || $category_depth == 'products' || (isset($HTTP_GET_VARS['manufacturers_id']) && !empty($HTTP_GET_VARS['manufacturers_id']))) {
 
     /******************************************************************************************/
     /********************** Optional Product Filter by Categories *****************************/
@@ -71,7 +71,7 @@
 
 </div>
 
-<?php
+<?php 
   } else {
 
     /****************************************************************/
@@ -90,7 +90,7 @@
         echo TEXT_MAIN;
       }
       include(DIR_WS_MODULES . FILENAME_HOME);
-  }
+  } 
 ?>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');

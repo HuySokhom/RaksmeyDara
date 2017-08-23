@@ -1,4 +1,6 @@
-
+<?php
+  $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+?>
     <!-- Top Header -->
     <div class="top-header">
       <div class="container">
@@ -18,8 +20,18 @@
                 </a>
               </li>
             </ul>
-            <!-- <ul class="list-inline pull-right">
-              <li class="hidden-xs"><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist (3)</a></li>
+            <ul class="list-inline pull-right">
+              <li>
+                <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $uri_parts[0] . '?language=kh';?>" title="Khmer">
+                  <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>
+                </a>
+              </li>
+              <li>                
+                <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $uri_parts[0] . '?language=en';?>" title="English">
+                  <img src="includes/languages/english/images/icon.gif" style="width: 30px;border: none; "/>
+                </a>
+              </li>
+              <!-- <li class="hidden-xs"><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist (3)</a></li>
               <li class="hidden-xs"><a href="compare.html"><i class="fa fa-align-left"></i> Compare (4)</a></li>
               <li>
                 <div class="dropdown">
@@ -46,8 +58,8 @@
                     </form>
                   </div>
                 </div>
-              </li>
-            </ul> -->
+              </li> -->
+            </ul>
           </div>
         </div>
       </div>
@@ -168,12 +180,13 @@
             </a> -->
           </div>
           <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
+            <?php
+              echo tep_get_categories_list();
+            ?>
+            <!-- <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
-              <?php
-                echo tep_get_categories_list();
-                ?>
-              <li class="dropdown hide">
+              
+              <li class="dropdown">
                 <a href="login.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   Pages <span class="caret"></span>
                 </a>
@@ -221,7 +234,7 @@
                   </li>
                 </ul>
               </li>
-            </ul>
+            </ul> -->
             <!-- <ul class="nav navbar-nav navbar-right navbar-feature visible-lg">
               <li><a><i class="fa fa-truck"></i> Free Shipping</a></li>
               <li><a><i class="fa fa-money"></i> Cash on Delivery</a></li>

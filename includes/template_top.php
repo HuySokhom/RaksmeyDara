@@ -20,6 +20,7 @@
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.theme.default.css" rel="stylesheet">
     <link href="assets/css/style.teal.flat.css" rel="stylesheet" id="theme">
+    <link href="assets/style.css" rel="stylesheet" id="theme">
 
     <meta property="og:title" content="<?php echo STORE_NAME; ?>">
     <meta property="og:url" content="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
