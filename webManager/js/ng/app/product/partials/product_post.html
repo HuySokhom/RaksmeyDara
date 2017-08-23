@@ -39,16 +39,35 @@
                         data-ng-class="{ 'has-error': form.name.$error.required && form.$submitted }">
                         <div class="col-md-3">
                             <span class="control-label">
-                                Name
+                                Name Khmer
                                 <span class="required">*</span>
                             </span>
                         </div>
                         <div class="col-md-6">
                             <input type="text"
                                 class="form-control"
-                                data-ng-model="vm.productDescription.products_name"
+                                data-ng-model="vm.productDescription.products_name_kh"
                                 name="name"
-                                placeholder="Name"
+                                placeholder="Name Khmer"
+                                required="required" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.name_en.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Name English
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text"
+                                class="form-control"
+                                data-ng-model="vm.productDescription.products_name_en"
+                                name="name_en"
+                                placeholder="Name English"
                                 required="required" />
                         </div>
                     </div>
@@ -129,19 +148,35 @@
                 </div> 
                 <div class="col-md-12">
                     <div class="form-group"
-                        data-ng-class="{ 'has-error': form.discount.$error.required && form.$submitted }">
+                        data-ng-class="{ 'has-error': form.products_description_kh.$error.required && form.$submitted }">
                         <div class="col-md-3">
                             <span class="control-label">
-                                Description
+                                Description Khmer
                             </span>
                         </div>
                         <div class="col-md-6">
-                            <textarea
-                                class="form-control"
-                                ui-tinymce="vm.tinymceOptions"
-                                data-ng-model="vm.productDescription.products_description"
-                                rows="15"
-                            ></textarea>
+                            <trix-editor placeholder="Description Khmer"
+                                angular-trix
+                                style="min-height: 200px; overflow: auto"
+                                data-ng-model="vm.productDescription.products_description_kh"
+                            ></trix-editor>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.products_description_en.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Description English
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <trix-editor placeholder="Description English"
+                                angular-trix
+                                style="min-height: 200px; overflow: auto"
+                                data-ng-model="vm.productDescription.products_description_en"
+                            ></trix-editor>
                         </div>
                     </div>
                 </div> 

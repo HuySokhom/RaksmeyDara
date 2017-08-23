@@ -15,7 +15,8 @@
     <!-- Bootstrap -->
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
     <!-- Plugins -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <!-- <link href="assets/css/font-awesome.css" rel="stylesheet"> -->
+    <script src="https://use.fontawesome.com/782811e415.js"></script>
     <link href="assets/css/bootstrap-select.css" rel="stylesheet">
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.theme.default.css" rel="stylesheet">

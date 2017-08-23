@@ -91,8 +91,8 @@
               </div>
             </div> -->
             <div class="input-group">
-              <input type="text" class="form-control search-input" aria-label="Search..."
-               placeholder="Search..." name="keywords">
+              <input type="text" class="form-control search-input"
+               placeholder="<?php echo TEXT_SEARCH;?>" name="keywords">
               <div class="input-group-btn">
                  <?php
                     echo tep_draw_pull_down_menu(
@@ -239,7 +239,7 @@
               <li><a><i class="fa fa-truck"></i> Free Shipping</a></li>
               <li><a><i class="fa fa-money"></i> Cash on Delivery</a></li>
               <li><a><i class="fa fa-lock"></i> Secure Payment</a></li>
-            </ul> -->
+            </ul>-->
           </div>
       </div>
     </nav>

@@ -2,7 +2,7 @@
   $query = tep_db_query("
     select *
     from page_description
-    where pages_id in (1,2)");
+    where pages_id in (1,2) and language_id = " . (int)$languages_id . "");
   $result = [];
 	while( $item = tep_db_fetch_array($query) ){
 		$result[] = $item ;

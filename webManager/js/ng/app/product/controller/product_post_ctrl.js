@@ -46,7 +46,10 @@ app.controller(
 				Restful.get("api/Product/" + $stateParams.id).success(function(data){
 					console.log(data);
 					vm.product = data.elements[0];
-					vm.productDescription = data.elements[0].product_detail[0];
+					vm.productDescription.products_description_en = data.elements[0].product_detail[0].products_description;
+					vm.productDescription.products_description_kh = data.elements[0].product_detail[1].products_description;
+					vm.productDescription.products_name_en = data.elements[0].product_detail[0].products_name;
+					vm.productDescription.products_name_kh = data.elements[0].product_detail[1].products_name;
 					vm.optionalImage = data.elements[0].image_detail;
 				});
 			}else{
@@ -63,7 +66,18 @@ app.controller(
 			// set object to save into news
 			var data = {
 				products: vm.product,
-				products_description: vm.productDescription,
+				products_description: [
+					{
+						products_name: vm.productDescription.products_name_en,
+						products_description: vm.productDescription.products_description_en,
+						language_id: 1,
+					},
+					{
+						products_name: vm.productDescription.products_name_kh,
+						products_description: vm.productDescription.products_description_kh,
+						language_id: 2,
+					}
+				],
 				products_image: vm.optionalImage
 			};
 			vm.loading = true;

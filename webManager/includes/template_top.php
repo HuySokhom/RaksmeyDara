@@ -23,5 +23,6 @@
   <link rel="stylesheet" type="text/css" href="assets/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/gentelella.min.css">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" type="text/css" href="js/ng/lib/trix/custom.css">
 </head>
 

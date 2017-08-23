@@ -23,7 +23,8 @@ app.controller(
 				Restful.get(url + $stateParams.id).success(function(data){
 					console.log(data);
 					vm.model = data.elements[0];
-					vm.model.name = data.elements[0].detail[0].categories_name;
+					vm.model.name_en = data.elements[0].detail[0].categories_name;
+					vm.model.name_kh = data.elements[0].detail[1].categories_name;
 				});
 			}else{
 				vm.title = 'Create New Category';
@@ -47,8 +48,12 @@ app.controller(
 				}],
 				detail: [
 					{
-						categories_name: vm.model.name,
+						categories_name: vm.model.name_en,
 						language_id: 1
+					},
+					{
+						categories_name: vm.model.name_kh,
+						language_id: 2
 					}
 				]
 			};console.log(data);

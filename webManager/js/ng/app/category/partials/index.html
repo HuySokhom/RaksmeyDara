@@ -32,8 +32,11 @@
 					<th width="5%">
 						#
 					</th>
-					<th width="40%">
-						Name
+					<th width="20%">
+						Name Khmer
+					</th>
+					<th width="20%">
+						Name English
 					</th>
 					<th width="15%">
 						Parent ID
@@ -60,6 +63,9 @@
 				<tr data-ng-repeat="c in vm.category.elements">
 					<td>
 						{{$index + 1 + vm.pageSize}}
+					</td>
+					<td>
+						<span data-ng-bind="c.detail[1].categories_name"></span>
 					</td>
 					<td>
 						<span data-ng-bind="c.detail[0].categories_name"></span>

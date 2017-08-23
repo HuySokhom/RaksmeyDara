@@ -19,7 +19,7 @@
     $category_query = tep_db_query("
         select c.categories_id, cd.categories_name 
         from categories c,  categories_description cd
-        where c.parent_id = 0 and c.categories_id = cd.categories_id"
+        where c.parent_id = 0 and c.categories_id = cd.categories_id and cd.language_id = " . (int)$languages_id . ""
     );
     $num_categories = tep_db_num_rows($category_query);
     $result_categories = array();

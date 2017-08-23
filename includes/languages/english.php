@@ -321,3 +321,16 @@ define('TEXT_CONTACT_AGENCY', 'Contact Agency');
 define('TEXT_MAKE_AN_ENQUIRY', 'Make an Enquiry');
 define('TEXT_MESSAGE', 'Message');
 define('TEXT_SUBMIT', 'Submit');
+
+
+define('TEXT_HOME', 'Home');
+define('TEXT_PRODUCTS', 'Products');
+define('TEXT_VIEW', 'View');
+define('TEXT_IN_STOCK', 'In stock');
+define('TEXT_OUT_OF_STOCK', 'Out of stock');
+define('TEXT_DESCRIPTION', 'Description');
+define('TEXT_AVAILABILITY', 'Availability');
+define('TEXT_PRICE', 'Price');
+define('TEXT_SHARE_TO', 'Share to');
+define('TEXT_RELATE_PRODUCTS', 'Related Products');
+define('TEXT_NO_PRODUCT_FOUND', 'No product found.');

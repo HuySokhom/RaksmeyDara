@@ -3,6 +3,8 @@
 <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap-js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/gentelella.min.js"></script>
+<script type="text/javascript" src="js/ng/lib/trix/trix.js"></script>
+
 <!-- END PLUGINS -->
  <script
     type="text/javascript"
@@ -24,6 +26,9 @@
     type="text/javascript"
     src="js/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
+<script type="text/javascript" 
+    src="js/ng/lib/angular-texteditor-trix/angular-trix.min.js"></script>
+
 <!-- <script
     type="text/javascript"
     src="js/ng/lib/angular-smart-table/smart-table.js"

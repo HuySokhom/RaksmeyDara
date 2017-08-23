@@ -32,18 +32,37 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group"
-                        data-ng-class="{ 'has-error': form.customers_name.$error.required && form.$submitted }">
+                        data-ng-class="{ 'has-error': form.name_kh.$error.required && form.$submitted }">
                         <div class="col-md-3">
                             <span class="control-label">
-                                Name
+                                Name Khmer
                                 <span class="required">*</span>
                             </span>
                         </div>
                         <div class="col-md-6">
                             <input type="text"
                                 class="form-control"
-                                data-ng-model="vm.model.name"
-                                name="customers_name"
+                                data-ng-model="vm.model.name_kh"
+                                name="name_kh"
+                                placeholder="Name"
+                                required="required" />
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-12">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': form.name_en.$error.required && form.$submitted }">
+                        <div class="col-md-3">
+                            <span class="control-label">
+                                Name English
+                                <span class="required">*</span>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text"
+                                class="form-control"
+                                data-ng-model="vm.model.name_en"
+                                name="name_en"
                                 placeholder="Name"
                                 required="required" />
                         </div>

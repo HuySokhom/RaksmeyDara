@@ -14,6 +14,7 @@
 			p.products_price,
 			p.products_discount,
       p.products_image,
+      p.products_quantity,
 			p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price,
 			pd.products_name,
 			pd.products_description,			
@@ -52,6 +53,7 @@
 			p.products_id,
 			p.products_price,
       p.products_discount,
+      p.products_quantity,
       p.products_image_thumbnail,
 			p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price,
 			pd.products_name
@@ -109,12 +111,24 @@
     <div class="breadcrumb-container">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Products</a></li>
+          <li>
+            <a href="index.html">
+              <?php 
+                echo TEXT_HOME;
+              ?>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <?php 
+                echo TEXT_PRODUCTS;
+              ?>
+            </a>
+          </li>
           <li class="active">
-		  	<?php 
-				echo $product_info['products_name'];
-			?>
+          <?php 
+            echo $product_info['products_name'];
+          ?>
 		  </li>
         </ol>
       </div>
@@ -138,7 +152,7 @@
                 }
             ?>
           </div>
-          <div class="title"><span>Share to</span></div>
+          <div class="title"><span><?php echo TEXT_SHARE_TO;?></span></div>
           <div class="share-button m-b-3">
             <!-- <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
             <button type="button" class="btn btn-info"><i class="fa fa-twitter"></i></button>
@@ -161,7 +175,7 @@
           <table class="table table-detail">
             <tbody>
               <tr>
-                <td>Price</td>
+                <td><?php echo TEXT_PRICE;?></td>
                 <td>
                   <div class="price">
                     <div>
@@ -175,11 +189,29 @@
                 </td>
               </tr>
               <tr>
-                <td>Availability</td>
-                <td><span class="label label-success arrowed">Ready Stock</span></td>
+                <td><?php echo TEXT_AVAILABILITY;?></td>
+                <td>
+                    <?php 
+                    if((int)$product_info['products_quantity'] > 0){
+                        echo '
+                          <span class="label label-success arrowed">
+                          '. TEXT_IN_STOCK .'
+                        </span>
+                        ';
+                    }else{
+                        echo '
+                          <span class="label label-danger arrowed">
+                          '. TEXT_OUT_OF_STOCK .'
+                          </span>
+                        ';
+                    } ?>
+                    
+                </td>
               </tr>
-              <tr></tr>
-                <td>View</td>
+              <tr>
+              
+              </tr>
+              <td><?php echo TEXT_VIEW;?></td>
                 <td>
 					<span class="label label-warning arrowed">
 						<?php echo $product_info['products_viewed'];?>
@@ -195,7 +227,7 @@
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
 				<a href="#desc" aria-controls="desc" role="tab" data-toggle="tab">
-					Description
+          <?php echo TEXT_DESCRIPTION;?>
 				</a>
 			</li>
           </ul>
@@ -223,7 +255,7 @@
       <div class="row m-t-3">
         <div class="col-xs-12">
         
-        <div class="title"><span>Related Products</span></div>
+        <div class="title"><span><?php echo TEXT_RELATE_PRODUCTS; ?></span></div>
         <?php                 
             if(count($relatePost) > 0){
         ?>
@@ -262,7 +294,7 @@
           
       <?php       
         }else{
-          echo '<div class="col-md-12 alert alert-info">No Product Found.</div>';
+          echo '<div class="col-md-12 alert alert-info"> ' . TEXT_NO_PRODUCT_FOUND . '</div>';
         }
       ?>
         </div>

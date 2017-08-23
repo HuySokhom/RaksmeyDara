@@ -1,3 +1,6 @@
+body{
+    font-family: "Khmer OS";
+}
 .site_title {
     font-size: 18px;
 }
@@ -10,3 +13,12 @@
 .required{
     color: #a94442;
 }
+trix-editor .attachment {
+    position: relative;
+    float: left;
+    max-width: 100%;
+    margin: 10px 10px 10px 0;
+    padding: 0;
+    color: #666;
+    font-size: 13px;
+  }

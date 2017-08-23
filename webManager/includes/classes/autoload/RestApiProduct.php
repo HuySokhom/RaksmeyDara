@@ -63,14 +63,14 @@ class RestApiProduct extends RestApi {
 		// save product description
 		$fields = $params['POST']['products_description'];
 		$productDetailObject = new ProductDescriptionObj();
-		$productDetailObject->setProductsId($productId);
-		$productDetailObject->setProperties($fields);
-		$productDetailObject->insert();
-		// foreach ( $fields as $k => $v){
-		// 	$productDetailObject->setProductsId($productId);
-		// 	$productDetailObject->setProperties($v);
-		// 	$productDetailObject->insert();
-		// }
+		// $productDetailObject->setProductsId($productId);
+		// $productDetailObject->setProperties($fields);
+		// $productDetailObject->insert();
+		foreach ( $fields as $k => $v){
+			$productDetailObject->setProductsId($productId);
+			$productDetailObject->setProperties($v);
+			$productDetailObject->insert();
+		}
 		unset($params);
 		return array(
 			'data' => array(
@@ -99,16 +99,15 @@ class RestApiProduct extends RestApi {
             // save product description
             $fields = $params['PUT']['products_description'];
             $productDetailObject = new ProductDescriptionObj();
-			$productDetailObject->setProductsId($productId);
-			$productDetailObject->setProperties($fields);
-			$productDetailObject->update();
-            // foreach ( $fields as $k => $v){
-            //     $productDetailObject->setProductsId($productId);
-            //     $productDetailObject->setLanguageId(1);
-            //     $productDetailObject->setProperties($v);
-            //     $productDetailObject->update();
-            //     unset($v);
-            // }
+			// $productDetailObject->setProductsId($productId);
+			// $productDetailObject->setProperties($fields);
+			// $productDetailObject->update();
+            foreach ( $fields as $k => $v){
+                $productDetailObject->setProductsId($productId);
+                $productDetailObject->setProperties($v);
+                $productDetailObject->update();
+                unset($v);
+            }
 
 			// save product images
 			$productImageObject = new ProductImageObj();

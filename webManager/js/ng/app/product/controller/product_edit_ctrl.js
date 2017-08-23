@@ -4,11 +4,11 @@ app.controller(
 	, 'Restful'
 	, '$stateParams'
 	, 'Services'
-	, '$location'
+	, '$state'
 	, 'alertify'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, $stateParams, Services, $location, $alertify, Upload, $timeout){
+	, function ($scope, Restful, $stateParams, Services, $state, $alertify, Upload, $timeout){
 		var vm = this;
 		vm.tinymceOptions = {};
 		vm.disabled = true;
@@ -25,10 +25,8 @@ app.controller(
 			});
             Restful.get("api/Category").success(function(data){
                 vm.categoryList = data;
-            });
-            Restful.get("api/Location").success(function(data){
-                vm.locations = data;
-            });
+			});
+			
 		};
 		vm.init();
 
@@ -40,13 +38,13 @@ app.controller(
                 vm.disabled = true;
 				console.log(data);
                 vm.service.alertMessage('<b>Complete: </b>Update Success.');
-				$location.path('product');
+				$state.path('product');
 			});
 		};
 
 		vm.back = function($event){
 			$event.preventDefault();
-			$location.path('/product');
+			$state.path('/product');
 		};
 
 	}

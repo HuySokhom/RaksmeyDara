@@ -325,3 +325,16 @@ define('TEXT_CONTACT_AGENCY', 'ភ្នាក់ងារទំនាក់ទ�
 define('TEXT_MAKE_AN_ENQUIRY', 'បង្កើតសំណួរ');
 define('TEXT_MESSAGE', 'សារ');
 define('TEXT_SUBMIT', 'ផ្ញើ');
+
+
+define('TEXT_HOME', 'ទំព័រដើម');
+define('TEXT_PRODUCTS', 'ផលិតផល');
+define('TEXT_VIEW', 'អ្នកមើល');
+define('TEXT_DESCRIPTION', 'ពិពណ៌នា');
+define('TEXT_AVAILABILITY', 'ភាពទំនេរ');
+define('TEXT_PRICE', 'តម្លៃ');
+define('TEXT_SHARE_TO', 'ចែករំលែកទៅ');
+define('TEXT_IN_STOCK', 'មានក្នុងស្តុក');
+define('TEXT_OUT_OF_STOCK', 'អស់ពីស្តុក');
+define('TEXT_RELATE_PRODUCTS', 'ផលិតផលដែលពាក់ព័ន្ធ');
+define('TEXT_NO_PRODUCT_FOUND', 'រកមិនឃើញផលិតផល។');
