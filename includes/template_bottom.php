@@ -1,8 +1,8 @@
 <?php   
   $query = tep_db_query("
-    select *
-    from page_description
-    where pages_id in (1,2) and language_id = " . (int)$languages_id . "");
+    select pd.pages_title, pd.pages_content
+    from page p inner join page_description pd on p.id = pd.pages_id
+    where p.id in (1,2,5) and pd.language_id = " . (int)$languages_id . "");
   $result = [];
 	while( $item = tep_db_fetch_array($query) ){
 		$result[] = $item ;
@@ -19,7 +19,9 @@
             <ul class="footer-icon">
               <li>
                 <span><i class="fa fa-map-marker"></i></span> 
-                <?php echo nl2br(STORE_ADDRESS); ?></li>
+                <?php 
+                  echo $result[2]['pages_content'];
+                ?>
               <li>
                 <span><i class="fa fa-phone"></i></span> 
                 <a href="tel:<?php echo STORE_PHONE;?>">
@@ -74,7 +76,18 @@
             <ul>
               <li>
                 <?php 
-                  echo $result[0]['pages_content'];
+                  // strip tags to avoid breaking any html
+                  $string = strip_tags($result[0]['pages_content']);
+
+                  if (strlen($string) > 500) {
+
+                      // truncate string
+                      $stringCut = substr($string, 0, 500);
+
+                      // make sure it ends in a word so assassinate doesn't become ass...
+                      $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=1') . $setLanguage .'">Read More</a>'; 
+                  }
+                  echo $string;
                 ?>
               </li>
             </ul>
@@ -82,8 +95,8 @@
         </div>
       </div>
       <div class="text-center copyright">
-        Copyright &copy; 2017 <?php echo STORE_NAME; ?> All right reserved. 
-        Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">Skweb Solution</a>.
+        <?php echo TEXT_COPY_RIGHT . ' ' . STORE_NAME . ' '  . TEXT_RIGHT_RESERVED . ' '  . TEXT_POWER_BY; ?>  
+        <a href="https://www.facebook.com/skwebsolution/" target="_blank">Skweb Solution</a>.
       </div>
     </div>
     <!-- End Footer -->

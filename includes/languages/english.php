@@ -334,3 +334,6 @@ define('TEXT_PRICE', 'Price');
 define('TEXT_SHARE_TO', 'Share to');
 define('TEXT_RELATE_PRODUCTS', 'Related Products');
 define('TEXT_NO_PRODUCT_FOUND', 'No product found.');
+define('TEXT_COPY_RIGHT','Copyright &copy; 2017 ');
+define('TEXT_RIGHT_RESERVED','All right reserved.');
+define('TEXT_POWER_BY','Power by');

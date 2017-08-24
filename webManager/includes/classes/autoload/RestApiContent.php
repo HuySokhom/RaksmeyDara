@@ -1,6 +1,7 @@
 <?php
 
 use
+	OSC\Content\Collection as ContentMasterCol,
 	OSC\ContentDescription\Collection as ContentCol,
 	OSC\ContentDescription\Object as ContentObj
 ;
@@ -8,7 +9,7 @@ use
 class RestApiContent extends RestApi {
 
 	public function get($params){
-		$col = new ContentCol();
+		$col = new ContentMasterCol();
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
@@ -18,9 +19,13 @@ class RestApiContent extends RestApi {
 	public function put($params){
 		$obj = new ContentObj();
 		$id = $this->getId();
-		$obj->setProperties($params['PUT']);
-		$obj->setId($id);
-		$obj->update();
+		$fields = $params['PUT'];
+		foreach ( $fields as $k => $v){			
+			$obj->setProperties($v);
+			$obj->setPagesId($id);
+			$obj->update();
+			unset($v);
+		}
 		return array(
 			'data' => array(
 				'success' => 'true'

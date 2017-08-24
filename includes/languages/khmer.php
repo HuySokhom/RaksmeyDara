@@ -338,3 +338,6 @@ define('TEXT_IN_STOCK', 'មានក្នុងស្តុក');
 define('TEXT_OUT_OF_STOCK', 'អស់ពីស្តុក');
 define('TEXT_RELATE_PRODUCTS', 'ផលិតផលដែលពាក់ព័ន្ធ');
 define('TEXT_NO_PRODUCT_FOUND', 'រកមិនឃើញផលិតផល។');
+define('TEXT_COPY_RIGHT','រក្សាសិទ្ធិ &copy; 2017');
+define('TEXT_RIGHT_RESERVED','សិទ្ធិទាំងអស់ត្រូវបានរក្សា។');
+define('TEXT_POWER_BY','បង្កើតដោយ ');

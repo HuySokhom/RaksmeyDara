@@ -11,17 +11,10 @@ class RestApiProducts extends RestApi {
 		$showDataPerPage = 9;
 		$start = $params['GET']['start'] ? $params['GET']['start'] : 0;
 		$userId = $this->getId();
-		$news_query = tep_db_query("
+		$item_query = tep_db_query("
 			select
 				p.products_id,
-				p.products_price,
-				p.products_image_thumbnail,
-				p.bed_rooms,
-				p.bath_rooms,
-				p.number_of_floors,
-				pd.products_name,
-				pd.products_viewed,
-				p.create_date
+				pd.products_name
 			from
 				products p, products_description pd
 			where
@@ -29,24 +22,17 @@ class RestApiProducts extends RestApi {
 					and
 				p.products_id = pd.products_id
 					and
-				pd.language_id = '" . $_SESSION['languages_id'] . "'
-					and
-				p.customers_id = '" . $userId . "'
+				pd.language_id = " . $_SESSION['languages_id'] . "
 					order by
-				p.create_date desc
-				limit $start, $showDataPerPage
+				p.products_id desc
 		");
 		$array = array();
-		while ($news_info = tep_db_fetch_array($news_query)){
-			$array[] = $news_info;
+		while ($item = tep_db_fetch_array($item_query)){
+			array_push($array,$item['products_name']);			
 		}
-		$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
-		$total = tep_db_fetch_array($news_count);
-
 		return array(
 			data => array(
-				elements => $array,
-				count => $total['total']
+				elements => $array
 			)
 		);
 //		$col = new ProductCol();

@@ -147,7 +147,11 @@ app.config([
 				templateUrl: 'js/ng/app/search_location/partials/index.html',
 				controller: 'search_popular_ctrl as vm'
 			})
-
+			.state('social_media', {
+				url: '/social_media',
+				templateUrl: 'js/ng/app/social_media/partials/index.html',
+				controller: 'social_media_ctrl as vm'
+			})
 			// .state('leason', {
             //     url: '/leason',
             //     template: '<div ui-view></div>',

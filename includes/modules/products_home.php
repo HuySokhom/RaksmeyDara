@@ -92,12 +92,12 @@
                           <div class="box-product-outer">
                             <div class="box-product">
                               <div class="img-wrapper">
-                                <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) .'">
+                                <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . $setLanguage .'">
                                   <img alt="'. $new_products['products_name'] .'" src="'. $new_products['products_image_thumbnail'] .'">
                                 </a>
                               </div>
                               <h6>
-                                <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) .'">
+                                <a href="'. tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . $setLanguage . '">
                                   '. $new_products['products_name'] .'
                                 </a>
                               </h6>

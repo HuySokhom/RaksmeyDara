@@ -1,5 +1,6 @@
 <?php
   $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+  $languageValue = $_SESSION['languages_id'] == 2 ? 'kh' : 'en';
 ?>
     <!-- Top Header -->
     <div class="top-header">
@@ -72,7 +73,7 @@
         <div class="row" style="padding: 15px 0px 15px 0px;">
           <div class="col-md-3 logo">
               <?php
-                echo '<a href="' . tep_href_link('index.php') . '">
+                echo '<a href="' . tep_href_link('index.php') . $setLanguage. '">
                     <img src="' . DIR_WS_IMAGES . STORE_LOGO .'" style="width:60px"
                     class="img-responsive" alt="logo"/></a>';
               ?>
@@ -93,6 +94,7 @@
             <div class="input-group">
               <input type="text" class="form-control search-input"
                placeholder="<?php echo TEXT_SEARCH;?>" name="keywords">
+               <input type="text" hidden name="language" value="<?php echo $languageValue;?>"/>
               <div class="input-group-btn">
                  <?php
                     echo tep_draw_pull_down_menu(

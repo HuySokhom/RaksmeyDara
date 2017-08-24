@@ -30,6 +30,7 @@ class Object extends DbObj {
 		, $categoriesId
 		, $categoryDetail
 		, $productsDiscount
+		, $productsQuantity
 	;
 	
 	public function toArray( $params = array() ){
@@ -46,6 +47,7 @@ class Object extends DbObj {
                 'product_detail',
 				'image_detail',
 				'products_image',
+				'products_quantity',
 				'products_image_thumbnail'
 			)
 		);
@@ -68,6 +70,7 @@ class Object extends DbObj {
 				products_price,
 				products_discount,
 				products_image,
+				products_quantity,
 				products_image_thumbnail,
 				create_by
 			FROM
@@ -148,6 +151,7 @@ class Object extends DbObj {
 				products
 			SET
 				products_price = '" . (int)$this->getProductsPrice() . "',
+				products_quantity = '" . $this->getProductsQuantity() . "', 
 				categories_id = '" . (int)$this->getCategoriesId() . "',
 				products_discount = '" . $this->getProductsDiscount() . "',
  				products_image = '" . $this->getProductsImage() . "',
@@ -168,6 +172,7 @@ class Object extends DbObj {
 				products_image_thumbnail,
 				products_price,
 				products_date_added,
+				products_quantity,
 				products_status,
 				create_date,
 				create_by,
@@ -179,7 +184,8 @@ class Object extends DbObj {
  				'" . $this->dbEscape( $this->getProductsImage() ) . "',
  				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
 				'" . $this->getProductsPrice() . "',
- 				NOW(),
+				NOW(),
+				'" . $this->getProductsQuantity() . "',
  				1,
  				NOW(),
 				 '" . $this->getCreateBy() . "',
@@ -269,6 +275,13 @@ class Object extends DbObj {
 	}
 	public function setCategoryDetail( $array ){
 		$this->categoryDetail = $array;
+	}
+
+	public function getProductsQuantity(){
+		return $this->productsQuantity;
+	}
+	public function setProductsQuantity( $int ){
+		$this->productsQuantity = doubleval($int);
 	}
 
 }

@@ -41,18 +41,18 @@
             <?php
                 if($row > 0) {
                   echo ' <div class="title">
-                            <span>Products</span>
+                            <span>'.TEXT_PRODUCTS.'</span>
                         </div>';
                   foreach ($prod_list_contents as $product) {
                     echo ' <div class="col-xs-6 col-sm-4 col-lg-3 box-product-outer">
                             <div class="box-product">
                                 <div class="img-wrapper">
-                                    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
+                                    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . $setLanguage .'">
                                         <img alt="Product" src="' . $product['products_image_thumbnail'] . '">
                                     </a>
                                 </div>
                                 <h6>
-                                    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . '">
+                                    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $product['products_id']) . $setLanguage .'">
                                         ' . $product['products_name'] . '
                                     </a>
                                 </h6>

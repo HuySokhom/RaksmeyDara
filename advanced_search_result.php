@@ -200,6 +200,7 @@
     pd.products_name,
     p.products_price,
     p.products_tax_class_id,
+    p.products_price - (p.products_price * p.products_discount / 100) as products_latest_price,
     IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price,
     IF(s.status, s.specials_new_products_price, p.products_price) as final_price ";
 

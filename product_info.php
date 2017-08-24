@@ -112,7 +112,7 @@
       <div class="container">
         <ol class="breadcrumb">
           <li>
-            <a href="index.html">
+            <a href="javascript:;">
               <?php 
                 echo TEXT_HOME;
               ?>
@@ -310,4 +310,6 @@
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
+<script src="assets/js/jquery.ez-plus.js"></script>
+<script src="assets/js/jquery.raty-fa.js"></script>
 <script src="assets/js/mimity.detail.js"></script>

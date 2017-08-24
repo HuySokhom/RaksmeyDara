@@ -1,5 +1,5 @@
-<div class="row">
-    <table class="table table-bordered table-striped">
+<div class="x_panel">
+    <table class="table table-striped">
         <thead>
         <th style="width: 80px;">
             Id
@@ -11,17 +11,16 @@
             Action
         </th>
         </thead>
-        <tr data-ng-repeat="n in contents.elements">
+        <tr data-ng-repeat="n in vm.contents.elements">
             <td>
                 {{n.id}}
             </td>
             <td>
-                {{n.pages_title}}
+                {{n.title}}
             </td>
             <td>
-                <button
-                    class="btn btn-default"
-                    data-ng-click="edit(n);"
+                <button class="btn btn-default btn-xs"
+                    data-ng-click="vm.edit(n);"
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Edit"
@@ -33,21 +32,21 @@
         </tr>
     </table>
     <div
-        data-ng-if="contents.elements == 0"
+        data-ng-if="vm.contents.elements == 0"
     >
         <div class="alert alert-danger alert-dismissible">
             <strong>Warning!</strong> Empty Data.
         </div>
     </div>
     <div
-        data-ng-if="!contents"
+        data-ng-if="!vm.contents"
         class="align_center"
     >
         <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
     </div>
 </div>
 
-<form data-ng-submit="save();" name="myForm">
+<form data-ng-submit="vm.save();" name="myForm">
     <div
         class="modal fade"
         id="contentPopup"
@@ -69,35 +68,72 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-bordered table-responsive">
-                        <tr>
-                            <td>
-                                Title
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    data-ng-model="title"
-                                    required="required"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5%">
-                                Content:
-                            </td>
-                            <td>
-                                <textarea
-                                    rows="15"
-                                    class="form-control"
-                                    ui-tinymce="tinymceOptions"
-                                    data-ng-model="content"
-                                    required="required"
-                                ></textarea>
-                            </td>
-                        </tr>
-                    </table>
+                    <form data-ng-submit="vm.save();" name="form" class="form-horizontal" novalidate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <span class="control-label">
+                                            Title English
+                                        </span>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text"
+                                            class="form-control"
+                                            data-ng-model="vm.title_en"
+                                            placeholder="Title English">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <span class="control-label">
+                                            Title Khmer
+                                        </span>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text"
+                                            class="form-control"
+                                            data-ng-model="vm.title_kh"
+                                            placeholder="Title Khmer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <span class="control-label">
+                                            Description English
+                                        </span>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <trix-editor placeholder="Description English"
+                                            angular-trix
+                                            style="min-height: 200px; overflow: auto"
+                                            data-ng-model="vm.description_en"
+                                        ></trix-editor>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <span class="control-label">
+                                            Description Khmer
+                                        </span>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <trix-editor placeholder="Description Khmer"
+                                            angular-trix
+                                            style="min-height: 200px; overflow: auto"
+                                            data-ng-model="vm.description_kh"
+                                        ></trix-editor>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button
@@ -108,7 +144,7 @@
                     </button>
                     <button
                         class="btn btn-primary"
-                        data-ng-disabled="isDisabled"
+                        data-ng-disabled="vm.isDisabled"
                     >
                         Save
                     </button>

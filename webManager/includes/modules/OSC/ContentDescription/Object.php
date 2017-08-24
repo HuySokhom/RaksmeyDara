@@ -53,7 +53,7 @@ class Object extends DbObj {
 	}
 
 	public function update() {
-		if( !$this->getId() ) {
+		if( !$this->getPagesId() ) {
 			throw new Exception("save method requires id");
 		}
 		$this->dbQuery("
@@ -64,7 +64,7 @@ class Object extends DbObj {
 				pages_content = '" . $this->dbEscape(  $this->getPagesContent() ) . "',
 				update_by = '" . $this->getUpdateBy() . "'
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				pages_id = '" . (int)$this->getPagesId() . "'
 					AND
 				language_id = '" . (int)$this->getLanguageId() . "'
 		");

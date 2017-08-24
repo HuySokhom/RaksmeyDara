@@ -251,18 +251,25 @@ function get_current_scroll() {
     // Typeahead example =======================================================================
     $('.search-input').typeahead({
       fitToElement: true,
-      source: [
-        'IncultGeo Print Polo T-Shirt',
-        'Tommy HilfigerNavy Blue Printed Polo T-Shirt',
-        'WranglerNavy Blue Solid Polo T-Shirt',
-        'NikeAs Matchup -Pq Grey Polo T-Shirt',
-        'CelioKhaki Printed Round Neck T-Shirt',
-        'CelioOff White Printed Round Neck T-Shirt',
-        'Levi\'sNavy Blue Printed Round Neck T-Shirt',
-        'IncultAcid Wash Raglan Crew Neck T-Shirt',
-        'Avoir EnvieOlive Printed Round Neck T-Shirt',
-        'ElaboradoBrown Printed Round Neck T-Shirt',
-      ]
+      autoSelect: true,
+      // source: [
+      //   'IncultGeo Print Polo T-Shirt',
+      //   'Tommy HilfigerNavy Blue Printed Polo T-Shirt',
+      //   'WranglerNavy Blue Solid Polo T-Shirt',
+      //   'NikeAs Matchup -Pq Grey Polo T-Shirt',
+      //   'CelioKhaki Printed Round Neck T-Shirt',
+      //   'CelioOff White Printed Round Neck T-Shirt',
+      //   'Levi\'sNavy Blue Printed Round Neck T-Shirt',
+      //   'IncultAcid Wash Raglan Crew Neck T-Shirt',
+      //   'Avoir EnvieOlive Printed Round Neck T-Shirt',
+      //   'ElaboradoBrown Printed Round Neck T-Shirt',
+      // ]
+      source: function (query, process) {
+          return $.get('api/Products', { query: query }, function (data) {
+           //console.log(data);
+              return process(data.elements);
+          });
+      }
     });
 
     // metisMenu for vertical-menu =============================================================

@@ -40,6 +40,8 @@
     <!-- Go to www.addthis.com/dashboard to customize your tools --> 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script> 
 <?php 
+    // set default language 
+    $setLanguage = $_SESSION['languages_id'] == 2 ? '?language=kh' : '?language=en';
     echo $oscTemplate->getBlocks('header_tags'); 
     require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 ?>

@@ -10,7 +10,8 @@ use
 class Object extends DbObj {
 
 	protected
-		$detail
+		$detail,
+		$title
 	;
 
 	public function __construct( $params = array() ){
@@ -24,7 +25,8 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'status',
-				'detail'
+				'detail',
+				'title'
 			)
 		);
 
@@ -34,7 +36,8 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				status
+				status,
+				title
 			FROM
 				page
 			WHERE
@@ -50,8 +53,15 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->detail->setFilter('id', $this->getId());
+		$this->detail->setFilter('pages_id', $this->getId());
 		$this->detail->populate();
+	}
+
+	public function setTitle( $string ){
+		$this->title = (string)$string;
+	}
+	public function getTitle(){
+		return $this->title;
 	}
 
 	public function setDetail( $string ){
