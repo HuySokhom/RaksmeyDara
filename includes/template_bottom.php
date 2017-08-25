@@ -7,9 +7,18 @@
 	while( $item = tep_db_fetch_array($query) ){
 		$result[] = $item ;
   }
+
+  // query social link
+  $query_link = tep_db_query("
+    select title, link from social_link where status = 1 order by id asc
+  ");
+  $linkResult = [];
+  while( $item = tep_db_fetch_array($query_link) ){
+    $linkResult[] = $item ;
+  }
+
   
 ?>
-    
     <!-- Footer -->
     <div class="footer">
       <div class="container">
@@ -49,19 +58,43 @@
             </div>
             <p>
               <?php 
-                echo $result[1]['pages_content'];
+                // strip tags to avoid breaking any html
+                $follow = strip_tags($result[1]['pages_content']);
+                if (strlen($follow) > 300) {
+                    // truncate string
+                    $stringCut = substr($follow, 0, 300);
+                    // make sure it ends in a word so assassinate doesn't become ass...
+                    $follow = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=2') . $setLanguage .'">Read More</a>'; 
+                }
+                echo $follow;
               ?>
             </p>
-            <ul class="follow-us">
+            <ul class="follow-us"><?php echo $linkResult[1]['link'];?>
               <li>
-                <a href="https://www.facebook.com/raksmeydaradaemtailor/" target="_blank">
+                <a href="https://<?php echo $linkResult[1]['link'];?>" target="_blank">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fa fa-rss"></i></a></li>
+              <li>
+                <a href="https://<?php echo $linkResult[2]['link'];?>" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://<?php echo $linkResult[3]['link'];?>" target="_blank">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://<?php echo $linkResult[4]['link'];?>" target="_blank">
+                  <i class="fa fa-instagram"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://<?php echo $linkResult[5]['link'];?>" target="_blank">
+                  <i class="fa fa-rss"></i>
+                </a>
+            </li>
             </ul>
           </div>
           <div class="clearfix visible-sm-block"></div>
@@ -79,10 +112,10 @@
                   // strip tags to avoid breaking any html
                   $string = strip_tags($result[0]['pages_content']);
 
-                  if (strlen($string) > 500) {
+                  if (strlen($string) > 300) {
 
                       // truncate string
-                      $stringCut = substr($string, 0, 500);
+                      $stringCut = substr($string, 0, 300);
 
                       // make sure it ends in a word so assassinate doesn't become ass...
                       $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=1') . $setLanguage .'">Read More</a>'; 

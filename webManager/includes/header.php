@@ -54,11 +54,11 @@
                                         Image Slider
                                     </a>
                                 </li>
-                                <!-- <li ui-sref-active="active">
-                                    <a ui-sref="user">
-                                        Users
+                                <li ui-sref-active="active">
+                                    <a ui-sref="social_media">
+                                        Social Link
                                     </a>
-                                </li> -->
+                                </li>
                                
                                 <li ui-sref-active="active">
                                     <a ui-sref="content">

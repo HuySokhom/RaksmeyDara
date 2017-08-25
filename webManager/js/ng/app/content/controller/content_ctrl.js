@@ -46,8 +46,8 @@ app.controller(
 			vm.id = params.id;
 			vm.title_en = params.detail[0].pages_title;
 			vm.title_kh = params.detail[1].pages_title;
-			vm.description_en = params.detail[0].pages_title;
-			vm.description_kh = params.detail[1].pages_title;
+			vm.description_en = params.detail[0].pages_content;
+			vm.description_kh = params.detail[1].pages_content;
 			$('#contentPopup').modal('show');
 		};
 

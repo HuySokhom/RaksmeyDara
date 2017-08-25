@@ -104,6 +104,11 @@
     type="text/javascript"
     src="js/ng/app/content/controller/content_ctrl.js"
 ></script> 
+<!-- social media ctrl -->
+<script
+    type="text/javascript"
+    src="js/ng/app/social_media/controller/social_media_ctrl.js"
+></script> 
 <!-- content ctrl -->
 <script
     type="text/javascript"
