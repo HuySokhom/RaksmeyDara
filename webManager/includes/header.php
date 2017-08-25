@@ -79,6 +79,16 @@
                                         Administrators
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="configuration.php?gID=1">
+                                        Configuration
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="store_logo.php">
+                                        Store Logo
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>

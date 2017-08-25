@@ -27,10 +27,14 @@
             <div class="title-footer"><span><?php echo STORE_NAME; ?></span></div>
             <ul class="footer-icon">
               <li>
-                <span><i class="fa fa-map-marker"></i></span> 
-                <?php 
-                  echo $result[2]['pages_content'];
-                ?>
+                <span style="float: left;"><i class="fa fa-map-marker"></i></span> 
+                <div style="float: left;">
+                  <?php 
+                    echo $result[2]['pages_content'];
+                  ?>
+                </div>
+                <div class="clearfix"></div>
+              </li>
               <li>
                 <span><i class="fa fa-phone"></i></span> 
                 <a href="tel:<?php echo STORE_PHONE;?>">
@@ -60,33 +64,38 @@
               <?php 
                 // strip tags to avoid breaking any html
                 $follow = strip_tags($result[1]['pages_content']);
-                if (strlen($follow) > 300) {
+                if($setLanguage == '?language=en'){
+                  $length = 300;
+                }else{
+                  $length = 500;
+                }
+                if (strlen($follow) > $length) {
                     // truncate string
-                    $stringCut = substr($follow, 0, 300);
+                    $stringCut = substr($follow, 0, $length);
                     // make sure it ends in a word so assassinate doesn't become ass...
                     $follow = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=2') . $setLanguage .'">Read More</a>'; 
                 }
                 echo $follow;
               ?>
             </p>
-            <ul class="follow-us"><?php echo $linkResult[1]['link'];?>
+            <ul class="follow-us">
               <li>
-                <a href="https://<?php echo $linkResult[1]['link'];?>" target="_blank">
+                <a href="https://<?php echo $linkResult[0]['link'];?>" target="_blank">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a href="https://<?php echo $linkResult[2]['link'];?>" target="_blank">
+                <a href="https://<?php echo $linkResult[1]['link'];?>" target="_blank">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a href="https://<?php echo $linkResult[3]['link'];?>" target="_blank">
+                <a href="https://<?php echo $linkResult[2]['link'];?>" target="_blank">
                   <i class="fa fa-google-plus"></i>
                 </a>
               </li>
               <li>
-                <a href="https://<?php echo $linkResult[4]['link'];?>" target="_blank">
+                <a href="https://<?php echo $linkResult[3]['link'];?>" target="_blank">
                   <i class="fa fa-instagram"></i>
                 </a>
               </li>
@@ -111,14 +120,19 @@
                 <?php 
                   // strip tags to avoid breaking any html
                   $string = strip_tags($result[0]['pages_content']);
-
-                  if (strlen($string) > 300) {
+                  if($setLanguage == '?language=en'){
+                    $length = 300;
+                  }else{
+                    $length = 500;
+                  }
+                  if (strlen($string) > $length) {
 
                       // truncate string
-                      $stringCut = substr($string, 0, 300);
+                      $stringCut = substr($string, 0, $length);
 
                       // make sure it ends in a word so assassinate doesn't become ass...
-                      $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=1') . $setLanguage .'">Read More</a>'; 
+                      $string = substr($stringCut, 0, strrpos($stringCut, ' ')).
+                        '... <a href="'. tep_href_link(FILENAME_PAGES, 'pages_id=1') . $setLanguage .'">Read More</a>'; 
                   }
                   echo $string;
                 ?>
