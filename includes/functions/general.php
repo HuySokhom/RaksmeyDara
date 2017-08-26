@@ -569,7 +569,7 @@ function tep_get_location($id = '') {
    }
    
     // set default language 
-    $setLanguage = $_SESSION['languages_id'] == 2 ? '?language=kh' : '?language=en';
+    $setLanguage = '';//$_SESSION['languages_id'] == 2 ? '?language=kh' : '?language=en';
    while ($categories = tep_db_fetch_array($categories_query)) {
       $t .= '<li  class="dropdown"><a href="' . tep_href_link(FILENAME_DEFAULT, 
           'cPath=' . $categories['categories_id']) . $setLanguage . '">';

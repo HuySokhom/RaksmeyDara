@@ -182,6 +182,13 @@
             </a> -->
           </div>
           <div class="collapse navbar-collapse" id="navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <?php
+                  echo '<a href="' . tep_href_link('index.php') . $setLanguage. '">'.TEXT_HOME.'</a>';
+                ?>
+              </li>
+            </ul>
             <?php
               echo tep_get_categories_list();
             ?>
