@@ -507,3 +507,37 @@
       $breadcrumb->add($model['products_model'], tep_href_link(FILENAME_PRODUCT_INFO, 'cPath=' . $cPath . '&products_id=' . $HTTP_GET_VARS['products_id']));
     }
   }
+  // set function seo class 
+  class seo{
+
+    protected $title, $description, $image;
+    
+    public function setTitle($text){
+      $this->title = $text;
+    }
+    public function getTitle(){
+      return $this->title . ' ' . STORE_NAME;
+    }
+
+    public function setImage($img){
+      $this->image = $img;
+    }
+    public function getImage(){
+      if(!$this->image){
+        $this->image = ($request_type == 'SSL') ? HTTPS_SERVER . '/' . DIR_WS_IMAGES . STORE_LOGO 
+          : HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . STORE_LOGO; 
+      }else{
+        $this->image = ($request_type == 'SSL') ? HTTPS_SERVER . '/' . $this->image
+          : HTTP_SERVER . DIR_WS_CATALOG . $this->image; 
+      }
+      return $this->image;
+    }
+
+    public function setDescription($des){
+      $this->description = $des;
+    }
+    public function getDescription(){
+      return $this->description . ' ' . STORE_NAME;
+    }
+  }
+  $seo = new seo();

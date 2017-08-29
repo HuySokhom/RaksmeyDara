@@ -7,7 +7,6 @@
 
 	require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_PRODUCT_INFO);
 
-	require(DIR_WS_INCLUDES . 'template_top.php');
 	$product_info_query = tep_db_query("
 		select
 			p.products_id,
@@ -31,6 +30,12 @@
 			pd.language_id = '" . (int)$languages_id . "'
 	");
 	$product_info = tep_db_fetch_array($product_info_query);
+
+  // start set seo product information
+  
+  $seo->setTitle($product_info['products_name']);
+  $seo->setDescription($product_info['products_description']);
+  $seo->setImage($product_info['products_image']);
 
   // query product image
   $image_query = tep_db_query("
@@ -77,7 +82,7 @@
 	while( $product_relate_info = tep_db_fetch_array($relate_product_query) ){
 		$relatePost[] = $product_relate_info ;
 	}
-
+  require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <?php
   if (tep_db_num_rows($product_info_query) < 1) {

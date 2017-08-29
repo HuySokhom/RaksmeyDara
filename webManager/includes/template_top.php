@@ -20,7 +20,8 @@
   <base href="<?php echo ($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_ADMIN : HTTP_SERVER . DIR_WS_ADMIN; ?>" />
   
   <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/font-awesome.min.css">
+  <script src="https://use.fontawesome.com/782811e415.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="assets/font-awesome.min.css"> -->
   <link rel="stylesheet" type="text/css" href="assets/css/gentelella.min.css">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
   <link rel="stylesheet" type="text/css" href="js/ng/lib/trix/custom.css">
